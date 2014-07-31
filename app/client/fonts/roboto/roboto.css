@@ -1,0 +1,59 @@
+/* (1) Roboto Black
+--------------------------------------*/
+
+@font-face {
+    font-family: 'Roboto Black';
+    src: url('Roboto-Black-webfont.eot');
+    src: url('Roboto-Black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Roboto-Black-webfont.woff') format('woff'),
+         url('Roboto-Black-webfont.ttf') format('truetype'),
+         url('Roboto-Black-webfont.svg#robotoblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* (2) Roboto Condensed Regular
+--------------------------------------*/
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('RobotoCondensed-Regular-webfont.eot');
+    src: url('RobotoCondensed-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('RobotoCondensed-Regular-webfont.woff') format('woff'),
+         url('RobotoCondensed-Regular-webfont.ttf') format('truetype'),
+         url('RobotoCondensed-Regular-webfont.svg#roboto_condensedregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* (3) Roboto Condensed Bold
+--------------------------------------*/
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('RobotoCondensed-Bold-webfont.eot');
+    src: url('RobotoCondensed-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('RobotoCondensed-Bold-webfont.woff') format('woff'),
+         url('RobotoCondensed-Bold-webfont.ttf') format('truetype'),
+         url('RobotoCondensed-Bold-webfont.svg#roboto_condensedbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+/* (4) Roboto Condensed Light
+--------------------------------------*/
+
+@font-face {
+    font-family: 'Roboto Condensed Light';
+    src: url('RobotoCondensed-Light-webfont.eot');
+    src: url('RobotoCondensed-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('RobotoCondensed-Light-webfont.woff') format('woff'),
+         url('RobotoCondensed-Light-webfont.ttf') format('truetype'),
+         url('RobotoCondensed-Light-webfont.svg#roboto_condensedlight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+
+}

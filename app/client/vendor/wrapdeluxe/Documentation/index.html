@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Deluxer Template Documentation</title>
+    <link href="css/default.css" rel="stylesheet" type="text/css" />
+   <link href="css/highlight.css" rel="stylesheet">
+     <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <div id="page-wrapper" class="clearfix">
+    
+      <div id="side-panel">
+        <img alt="thumb" src="images/doclogo.jpg" class="pad-10 dark-inset mgb-20" width="140" />
+        <ul id="nav">
+          <li><a href="#page-wrapper">Home</a></li>
+          <li><a href="#structure">HTML structure</a></li>
+          <li><a href="#css">CSS structure</a></li>
+          <li><a href="#sass">Sass structure</a></li>
+          <li><a href="#variables">Changing SASS Variables</a></li>
+          <li><a href="#skin">Changing Skin color</a></li>
+          <li><a href="#feeds">Twitter and Flickr Feeds</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#carousels">Carousels</a></li>
+          <li><a href="#bootstrap">Using Bootsrap</a></li>
+          <li><a href="#images">Image Credits</a></li>
+          <li><a href="#scripts">Script Credits</a></li>
+        </ul>
+      </div>
+      
+      <div id="main-panel">
+        <h2 id="topic-0">Deluxer Template Documentation</h2>
+          <ul class="desc">
+             <li><img alt="u:" src="images/user.png" height="16" /><a href="https://wrapbootstrap.com/user/RahisiThemes">Rahisi Themes</a></li>
+             <li><img alt="d:" src="images/clock.png" />APRIL 2014 </li>
+          </ul>
+          
+          <hr/>
+
+          <h3 id="structure">HTML structure</h3>
+          <p>Each HTML page contains a <strong>header, content blocks and a footer</strong>. In some pages a <strong>title block</strong> is added right before the content block. The home page content is made up of <strong>independent content blocks</strong> rather than 1 single content block. The diagrams below shows the hierachy and arrangement of the different sections. Note that the 1st section(page wrapper) wraps all the other sections.</p>
+          <img src="images/doc1.jpg" alt="image" class="mgb-20"/>
+          <p>It is easier to modify the existing page templates rather than creating new ones. However, if you must, make sure you use the exact id names and class names used in the other pages.</p>
+          
+          <hr />
+            
+            <h3 id="css">CSS Structure</h3>
+
+            <p>All style sheets used with exception to bootstrap and the included fonts are located in the <strong>css</strong> folder.</p>
+            <ul class="disc">
+              <li>The main css is file named <i>default.css</i></li>
+              <li><i>default.css</i> must be referenced on every page</li>
+            </ul>
+            <p>The popular css pre-processor <i><strong>Sass</strong></i> was used to generate the main stylesheet. You can still edit the file directly but it may be better to work with the source Sass files instead.</p>
+            
+            <h3 id="sass">Sass Structure</h3>
+            <p>All Sass files can be found in the sass folder. When compiled, any css output files are copied to the css directory.</p>
+            <ul class="disc">
+              <li>Different sections have been organized inside directories and sub directories.</li>
+              <li>The main sass files is named <i>default.scss</i> and imports all the required sections</li>
+              <li>When <i>default.scss</i> is compiled it gereates <i>default.css</i> which is copied to the css directory</li>
+            </ul>
+            <p>If you do not need any of the sections you can simply delete the section's import statement in <i>default.scss</i></p>
+            <div class="bs-callout bs-callout-info">
+              <h4>Which is the main CSS/SASS file?</h4>
+              <p>The main <strong>Sass</strong> file is named <i>default.scss</i> and generates <i>default.css</i> when compiled.</p>
+            </div>
+            <h5>Working with SASS</h5>
+            <p>Sass is an extension of CSS that adds power and elegance to the basic language. It allows you to use variables, nested rules, mixins, inline imports, and more, all with a fully CSS-compatible syntax. Sass helps keep large stylesheets well-organized, and get small stylesheets up and running quickly</p>
+            <div class="bs-callout bs-callout-info">
+              <h4>Learn more about SASS !</h4>
+              <p>For an in depth explanation of SASS and information on usage please visit <a href="http://sass-lang.com/">http://sass-lang.com/</a></p>
+            </div>
+            <h5>Free SASS compilers</h5>
+            <p>There are many GUI SASS compilers that be downloaded online.</p>
+            <ul class="disc">
+                    <li>
+                      <a href="http://incident57.com/codekit/">CodeKit</a>
+                      <span class="info">(Paid)</span>
+                    </li>
+                    <li>
+                      <a href="http://compass.handlino.com/">Compass.app</a>
+                      <span class="info">(Paid, Open Source)</span>
+                    </li>
+                    <li>
+                      <a href="http://hammerformac.com/">Hammer</a>
+                    </li>
+                    <li>
+                      <a href="http://koala-app.com/">Koala</a>
+                      <span class="info">(Open Source)</span>
+                    </li>
+                    <li>
+                      <a href="http://livereload.com/">LiveReload</a>
+
+                    </li>
+                    <li>
+                      <a href="http://mixture.io/">Mixture</a>
+                      <span class="info">(Paid)</span>
+                    </li>
+                    <li>
+                      <a href="http://alphapixels.com/prepros/">Prepros</a>
+                      <span class="info">(Open Source)</span>
+                    </li>
+                    <li>
+                      <a href="http://alphapixels.com/prepros/pro">Prepros Pro</a>
+                      <span class="info">(Paid)</span>
+                    </li>
+                    <li>
+                      <a href="http://mhs.github.io/scout-app/">Scout</a>
+                      <span class="info">(Open Source)</span>
+                      <span class="mac-icon"></span>
+                      <span class="windows-icon"></span>
+                    </li>
+                  </ul>
+             <p>The free application <a href="http://koala-app.com/">Koala</a> was used to compile the SASS files in this theme </p>
+            <h5>Using Koala compile SASS files</h5>
+            <p>The first time you run <a href="http://koala-app.com/">Koala</a> a screen similar to the one below should open.</p>
+            		<img src="images/doc6.jpg" alt="image" class="mgb-20"/>
+            <p>The next thing you should do is load the included <strong>Sass</strong> files. You do this by locating the entire <i>sass</i> directory in windows explorer and dragging it to the app as indicated. Once you do this Koala will try to list all the <strong>Sass</strong> files it can find in the directory. </p>
+              
+            <img src="images/doc5.jpg" alt="image" class="mgb-20"/>
+            <p>Only select <i>default.scss</i> since it references all the other SASS files. Make sure to de-select the <strong>compass mode</strong> option on the right then click <strong>compile.</strong> Thats it ! default.scss should be compiled to <i>default.css</i> and <strong>copied to the css folder</strong>.</p>
+            
+            <h5>compiling changes</h5>
+            <p>Whenever you edit any of the the stylesheets, always run <a href="http://koala-app.com/">Koala</a> and compile the changes.</p>
+            <p>Sass files should be treated just like regular css files. Use the same properties, values and syntax that you would use with a css stylesheet.</p>
+           
+            <h5>Auto compiling changes</h5>
+            <p>If you do not want to click compile everytime you make changes, simply select the auto-compile option on the right. Now <a href="http://koala-app.com/">Koala</a> will watch all the files in the <strong>sass</strong> directory and automatically compile any changes.</p>
+           
+            <div class="bs-callout bs-callout-info">
+              <h4>Remember to compile any new changes!</h4>
+              <p>The main stylesheets <i>default.scss</i> needs to be compiled every time you make changes. You can select the Auto Compile option in Koala to automate this process.</p>
+            </div>
+
+            <h5>Compressing Stylesheets</h5>
+            <p>If you want compress the generated files, simply select the desired compression level found in the options. Koala will remember the setting even if you have selected a file to be auto compiled.</p>
+            <h3 id="variables">Changing SASS Variables</h3>
+            
+            <p>If you examine the main Sass files you will find that many variables have been used to setup the layout and skin of the theme.</p>
+            <ul class="disc">
+              <li>All the variables are contained in file named <i>_variables.scss</i></li>
+              <li>Boolean variables should be entered as either <strong>true</strong> or <strong>false</strong></li>
+              <li>Integer variables should be entered in the <strong>same units</strong> as the previous value</li>
+            </ul>
+            <h3 id="skin">Changing Skin Color</h3>
+
+            <p>Only 2 colors are used to generate a new skin. The variables in the SASS files are named as follows:</p>
+            <ul class="disc">
+              <li><i>$color-1</i>  - The bright color</li>
+              <li><i>$color-2</i>  - The dark color</li>
+            </ul>
+            <p>All the available skin files can be found in the <i>"css / skins"</i> directory. To create your own simply copy and rename any of the available skins and replace the color values with your own.</p>
+            <p>Once you have saved the new skin, simply import it in the <i>default.scss</i> file as shown below. Compile the file and new colors will be reflected throughout the theme.</p>
+            			<img src="images/doc4.jpg" alt="image" class="mgb-20"/>
+            <hr />
+			
+			<h3 id="feeds">Changing Twitter and Flickr Feeds</h3>
+
+            <p>Changing the feeds is easy. Navigate to the js folder and open template.js and find the sections shown below</p>
+			<img src="images/doc2.jpg" alt="image" class="mgb-20"/>
+			<p>Simply replace the account names highlighted with your own.</p>
+            
+            <hr />
+			
+			<h3 id="portfolio">Portfolio</h3>
+
+			<p>Replacing the portfolio with your own items is easy. Before you start take note of the following:</p>
+            <ul class="disc spaced">
+                <li>All preview images must have the same dimensions so that they align with the grid.</li>
+                <li>The full size images that preview images link to can be of any dimensions.</li>
+                <li>You must use the same filter words you put in the filter menu as the ones you input in the <strong>data-type</strong> attribute in the portfolio list.</li>           
+            </ul>
+			    <p>Once you collect and group your items/images, you should replace the the values in the filter menu with your own category names. The 
+                <strong>class attribute holds the category name which must be one word</strong> as this value links to items with the same <strong>data-type</strong> in the portfolio.</p>
+			<img src="images/doc3.jpg" alt="image" class="mgb-20"/>
+	
+            
+            <hr />
+            
+      <h3 id="carousels">Responsive Carousels</h3>
+       <p>The popular open source responsive slider plugin <a href="http://bxslider.com/"><i>BxSlider</i></a> has been modified to accept breakpoints for different screen sizes. The modifications allow you to set the number of slides to be shown on different screen sizes using a simple data attribute. There is no limit on the range of screen sizes you can target!</p>
+      
+        <h3>1. setup your slider</h3>
+        <p>First setup your carousel as you would setup any other bx slider slider.</p>
+<pre>
+ <code>
+    &lt;ul id="myslider" class="bxslider"&gt;
+      &lt;li&gt; &lt;img src="pic1.jpg" /&gt; &lt;/li&gt;
+      &lt;li&gt; &lt;img src="pic2.jpg" /&gt; &lt;/li&gt;
+      &lt;li&gt; &lt;img src="pic3.jpg" /&gt; &lt;/li&gt;
+      &lt;li&gt; &lt;img src="pic4.jpg" /&gt; &lt;/li&gt;
+      &lt;li&gt; &lt;img src="pic5.jpg" /&gt; &lt;/li&gt;
+      &lt;li&gt; &lt;img src="pic6.jpg" /&gt; &lt;/li&gt;
+    &lt;/ul&gt;
+ </code>
+</pre>
+
+        <h3>2. set default options</h3>
+        <p>You can use a handy data attribute I created called <strong>data-options</strong> to pass any configuration options. All of BxSlider's options are supported together with 5 new additional options.</p>
+        <ul>
+          <li><strong>screen: </strong> defines a minimum screen size to target</li>
+          <li><strong>slides: </strong> a quick way of setting both min and max slides with one value</li>
+          <li><strong>autoReload: </strong> forces the slider to be reloaded when the screen size changes</li>
+          <li><strong>parentSelector: </strong> reference to a parent element if it exists</li>
+          <li><strong>removeParentClass: </strong> removes a named class from the parent once the slider loads. Useful when you want to disable some styles once the slider loads.</li>
+        </ul>
+<pre>
+ <code>
+    &lt;ul id="myslider" class="bxslider" data-options="slideMargin:5, autoReload:true" &gt;
+ </code>
+</pre>
+        <h3>3. Define break points</h3>
+        <p>Each break point is defined as a set configuration objects enclosed in curly brackets. All of BxSlider's options are supported.</p>
+<pre>
+ <code>
+    [{screen:460, slides:2, pager:false, controls:true}]
+ </code>
+</pre>    
+        <p>The above will be interpreted as follows:</p>
+        <ul>
+          <li>Target a minimum screen size of <strong>460px</strong></li>
+          <li>Only show <strong>2</strong> slides at that screen size</li>
+          <li>Set the <strong>pager</strong> option to false at that screen size</li>
+          <li>Set the <strong>controls</strong> option to true at that screen size</li>
+        </ul>
+  
+        <p>Multiple break points are separated by commas and set inside a data attribute named data-breaks. To target the <strong>least possible screen size</strong> use <strong>screen:0</strong></p>
+<pre>
+ <code>
+    data-breaks="[{screen:0, slides:1, pager:false},{screen:460, slides:2},{screen:768, slides:3}]"
+ </code>
+</pre>  
+        <h3>4. Put everything together</h3>
+        <p>This is how your slider should look once you put everything together.</p>
+<pre>
+ <code>
+    &lt;ul id="myslider" class="bxslider" data-options="slideMargin:5, autoReload:true" data-breaks="[{screen:0, slides:1, pager:false},{screen:460, slides:2},{screen:768, slides:3}]"&gt;
+      &lt;li&gt; &lt;img src="pic1.jpg" /&gt; &lt;/li&gt;
+      &lt;li&gt; &lt;img src="pic2.jpg" /&gt; &lt;/li&gt;
+      &lt;li&gt; &lt;img src="pic3.jpg" /&gt; &lt;/li&gt;
+      &lt;li&gt; &lt;img src="pic4.jpg" /&gt; &lt;/li&gt;
+      &lt;li&gt; &lt;img src="pic5.jpg" /&gt; &lt;/li&gt;
+      &lt;li&gt; &lt;img src="pic6.jpg" /&gt; &lt;/li&gt;
+    &lt;/ul&gt;
+ </code>
+</pre>
+        <p>Now just call the bxSlider function the usual way.</p>
+<pre>
+ <code>
+    $(document).ready( function() {
+    
+        $('#myslider').bxSlider();
+      
+    });
+ </code>
+</pre>  
+        <p>If you prefer not to use data attributes, the breaks and other new options can still be passed during the call.</p>
+<pre>
+ <code>
+    $(document).ready( function() {
+    
+        $('#myslider').bxSlider({
+          slideMargin: 5,
+          autoReload: true,
+          breaks: [{screen:0, slides:1, pager:false},{screen:460, slides:2},{screen:768, slides:3}]
+        });
+      
+    });
+ </code>
+</pre>  
+<h3>Calling the slider without any code!</h3>
+<p>If you do not want to manually call each an every slider you setup, you can use a new attribute called <strong>data-call</strong> and the <strong>slider will call itself!</strong></p>
+<pre>
+ <code>
+    &lt;ul id="myslider" class="bxslider" data-call="bxslider" &gt;
+ </code>
+</pre>
+      <hr />
+			<h3 id="bootstrap">Using Bootrap</h3>
+
+            <p>Please refer to the official bootstrap documentation on <a href="http://getbootstrap.com/">getbootstrap.com</a></li></p>
+            
+			<h3 id="images" >Image Credits</h3>
+			<p>The images used in this theme are licenced for free use and were sourced from the following flickr users. </p>
+			<ul class="square">
+				<li><a href="http://www.flickr.com/photos/dmsumon/sets/">http://www.flickr.com/photos/dmsumon/sets/</a></li>
+				<li><a href="http://www.flickr.com/photos/anothervision21/">http://www.flickr.com/photos/anothervision21/</a></li>
+				<li><a href="http://www.flickr.com/photos/danrocha/">http://www.flickr.com/photos/danrocha/</a></li>
+				<li><a href="www.flickr.com/photos/yuri_samoilov/">www.flickr.com/photos/yuri_samoilov/</a></li>
+				<li><a href="http://www.flickr.com/photos/ivanmcclellan/">http://www.flickr.com/photos/ivanmcclellan/</a></li>
+				<li><a href="http://www.flickr.com/photos/72213316@N00/">http://www.flickr.com/photos/72213316@N00/</a></li>
+
+			</ul>
+			<p>Click an individual image to visit it's source page on flickr.</p>
+            <ul class="photo-credits clearfix">
+				<li><a href="http://www.flickr.com/photos/dmsumon/7003795776/in/set-72157629616961474"><img src="../templates/images/portfolio/pic1.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/dmsumon/7003796470/in/set-72157629616961474"><img src="../templates/images/portfolio/pic2.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/dmsumon/7149876525/in/set-72157629616961474"><img src="../templates/images/portfolio/pic3.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/dmsumon/7149876865/in/set-72157629616961474"><img src="../templates/images/portfolio/pic4.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/dmsumon/7149884535/in/set-72157629616961474"><img src="../templates/images/portfolio/pic5.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/dmsumon/7003792992/in/set-72157629616961474"><img src="../templates/images/portfolio/pic6.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/dmsumon/7149881705/in/set-72157629616961474"><img src="../templates/images/portfolio/pic7.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/dmsumon/7149880831/in/set-72157629616961474"><img src="../templates/images/portfolio/pic8.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/dmsumon/7149881251/in/set-72157629616961474"><img src="../templates/images/portfolio/pic9.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/anothervision21/8527296398/"><img src="../templates/images/face1.jpg" alt="" /></a></li>
+				<li><a href="#"><img src="../templates/images/face2.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/danrocha/11667664975/"><img src="../templates/images/face3.jpg" alt="" /></a></li>
+				<li><a href="www.flickr.com/photos/yuri_samoilov/9965420034/"><img src="../templates/images/team1.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/anothervision21/8524355404/"><img src="../templates/images/team2.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/anothervision21/8506818996/"><img src="../templates/images/team3.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/anothervision21/8759647836/"><img src="../templates/images/team4.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/anothervision21/8466746051/"><img src="../templates/images/team5.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/anothervision21/7898944162/"><img src="../templates/images/team6.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/paulobar/367422917"><img src="../templates/images/backgrounds/cover1.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/stewart/168753875"><img src="../templates/images/backgrounds/cover2.jpg" alt="" /></a></li>
+				<li><a href="http://www.flickr.com/photos/fergusonphotography/3056953388"><img src="../templates/images/backgrounds/cover3.jpg" alt="" /></a></li>
+			</ul>
+
+            <h3 id="scripts" >Script and Other credits</h3>
+            <p>The following icon sets and jquery plugins were used and are licensed for commercial use</p>
+            <ul class="square spaced">
+                <li>Font icons from <a href="http://fontawesome.io">FontAwesome</a></li>
+                <li>Image box plugin by <a href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/">PrettyPhoto</a></li>
+				<li>jQuery by <a href="http://jquery.com‎">The jQuery Foundation</a></li>
+				<li>Bootsrap 3 by <a href="http://getbootstrap.com/">Twitter Team</a></li>
+				<li>BxSlider from <a href="http://bxslider.com/">bxslider.com</a></li>
+				<li>Portfolio plugin by <a href="http://razorjack.net/quicksand/">Quicksand</a></li>
+            </ul>
+
+            <div class="bs-callout bs-callout-info">
+              <h4>Asset Help and Documentation</h4>
+              <p>Visit their respective host sites&nbsp; for more documentation.</p>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>

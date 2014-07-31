@@ -1,0 +1,55 @@
+<div id="page-wrapper">
+
+  <header id="header">
+    {{partial "nav-main"}}
+  </header>
+
+  {{ outlet }}
+
+  <footer id="footer">
+    <div class="top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-sm-4 col-md-4">
+            <h5>latest tweets</h5>
+            <div id="footer-tweets"></div>
+          </div>
+
+          <div class="col-sm-4 col-md-4">
+            <h5>Information</h5>
+            <ul class="links underline">
+              <li>{{#link-to "about"}}About Us{{/link-to}}</li>
+              <li>{{#link-to "about"}}Privacy Policy{{/link-to}}</li>
+              <li>{{#link-to "about"}}Terms &amp; Conditions{{/link-to}}</li>
+            </ul>
+          </div>
+
+          <div class="col-sm-4 col-md-4">
+            <h5>newsletter</h5>
+            <p>Get the latest news and updates delivered straight to your email.</p>
+            <div class="input-group newsletter-signup">
+              <input type="text" class="form-control" placeholder="Email Address">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">sign up</button>
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="container">
+        <ul class="social-buttons colored-bg-on-hover round clearfix">
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-rss"></i></a></li>
+          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</div>

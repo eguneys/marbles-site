@@ -1,0 +1,53 @@
+<!-- Main Navigation -->
+<nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <!-- Container -->
+  <div class="container">
+
+    <!-- header -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="fa fa-bars fa-lg"></span>
+      </button>
+      {{#link-to "index" class="navbar-brand"}}
+        <h1><i class="fa fa-circle alt-color"></i>
+          Marbles
+        </h1>
+      {{/link-to}}
+    </div>
+    
+    <!-- nav-collapse -->
+    <div class="collapse navbar-collapse">
+      <!--
+      <ul class="nav navbar-nav nav-buttons navbar-right">
+        <li>{{#link-to "index" class="nav-btn"}}
+          <i class="fa fa-envelope"></i>
+          <span class="xs-only">
+            contact
+          </span>
+        {{/link-to}}
+        </li>
+        <li>
+          <a class="nav-btn bg-2 top-bar-toggle" href="#top-bar" data-custom-toggle="slide" data-class="open" data-target="#top-bar">
+            <span class="symbol"></span>
+          </a>
+        </li>
+      </ul>
+      -->
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li>{{#link-to "index"}}
+          <i class="icon fa fa-home fa-fw"></i>
+          home
+        {{/link-to}}</li>
+        <li>{{#link-to "games"}}
+          <i class="icon fa fa-square fa-fw"></i>
+          games
+        {{/link-to}}</li>
+        <li>{{#link-to "about"}}
+          <i class="icon fa fa-info"></i>
+          about
+        {{/link-to}}</li>
+      </ul>
+    </div><!-- /.nav-collapse -->
+  </div><!-- /Container -->
+</nav>
