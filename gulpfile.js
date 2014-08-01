@@ -61,8 +61,18 @@ gulp.task('build-dev-fonts', function() {
 });
 
 gulp.task('build-dev-extras', function() {
-    return gulp.src(paths.src.common + '/*.*')
-        .pipe(gulp.dest(paths.dev_dist));
+    var mergeStream = require('merge-stream');
+    
+    var vendorStream = gulp.src(paths.src.common + '/vendor/marbles/data/**/*')
+            .pipe($.rename(function(path) {
+                path.dirname = 'marbles/data/' + path.dirname;
+            }))
+            .pipe(gulp.dest(paths.dev_dist + '/vendor'));
+    
+    var commonStream = gulp.src(paths.src.common + '/*.*')
+            .pipe(gulp.dest(paths.dev_dist));
+
+    return mergeStream([vendorStream, commonStream]);
 });
 
 gulp.task('build-dev-templates', function() {
@@ -105,9 +115,17 @@ gulp.task('build-dev-templates', function() {
 });
 
 gulp.task('build-dev-commonjs', ['jshint'], function() {
-    return gulp.src([paths.src.common + '/bower_components/**/*.js'])
-        .pipe($.changed(paths.dev_dist + '/scripts/lib'))
-        .pipe(gulp.dest(paths.dev_dist + '/scripts/lib'));
+    var mergeStream = require('merge-stream');
+    
+    var bowers = gulp.src([paths.src.common + '/bower_components/**/*.js'])
+            .pipe($.changed(paths.dev_dist + '/scripts/lib'))
+            .pipe(gulp.dest(paths.dev_dist + '/scripts/lib'));
+
+    var vendors = gulp.src([paths.src.common + '/vendor/**/*.js'])
+            .pipe($.changed(paths.dev_dist + '/scripts/vendor'))
+            .pipe(gulp.dest(paths.dev_dist + '/scripts/vendor'));
+
+    return mergeStream([bowers, vendors]);
 });
 
 gulp.task('build-dev-mainjs', ['jshint'], function() {

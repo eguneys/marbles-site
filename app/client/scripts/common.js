@@ -14,7 +14,8 @@ requirejs.config({
         requirejs: 'requirejs/require',
         handlebars: 'handlebars/handlebars',
         bootstrap: 'bootstrap-sass-official/assets/javascripts/bootstrap',
-        'ember-data': 'ember-data/ember-data'
+        'ember-data': 'ember-data/ember-data',
+        vendor: '../vendor'
     },
     shim: {
         ember: {
