@@ -11,8 +11,12 @@ $icon-font-path: "../fonts/";
 @import "font-awesome/scss/font-awesome.scss";
 //endbower
 
+// wrapdeluxe variables
+$header-fixed: false;
+$page-title-pad-y: 50px;
 @import "../vendor/wrapdeluxe/Templates/sass/default.scss";
 
 @import "reset";
 @import "pages/home";
+@import "pages/play";
 @import "layout/footer";

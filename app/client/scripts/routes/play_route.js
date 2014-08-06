@@ -9,8 +9,12 @@ define(['ember', 'app/app', 'templates/play', 'controllers/play_controller'], fu
                     var game = new lym.app({
                         parent: 'game-area',
                         paths: {
-                            sprites: '/public/assets/vendor/marbles/data/images/sprites'
-                        }
+                            sprites: '/public/assets/vendor/marbles/data/images/sprites',
+                            audio: '/public/assets/vendor/marbles/data/audio/sprites'
+                        },
+                        sfxVolume: 1,
+                        musicVolume: 1,
+                        onGameEnd: ctrl.get('onGameEndCallback')
                     });
                     game.start();
 
