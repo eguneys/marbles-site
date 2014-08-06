@@ -1,0 +1,1 @@
+* Kill the Phaser when route is changed
