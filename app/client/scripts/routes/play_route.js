@@ -27,9 +27,12 @@ define(['ember', 'app/app', 'templates/play', 'controllers/play_controller'], fu
 
         actions: {
             willTransition: function(transition, route) {
-                var ctrl = this.controllerFor('play.index');
-                
-                ctrl.quitGame();
+                //var ctrl = this.controllerFor('play.index');
+                //ctrl.quitGame(false);
+
+                transition.abort();
+
+                window.location.href = '/' + transition.targetName;
             }
         }
     });
