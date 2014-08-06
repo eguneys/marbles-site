@@ -14,15 +14,23 @@ define(['ember', 'app/app', 'templates/play', 'controllers/play_controller'], fu
                         },
                         sfxVolume: 1,
                         musicVolume: 1,
-                        onGameEnd: ctrl.get('onGameEndCallback')
+                        onGameEnd: ctrl.get('onGameEndCallback').bind(ctrl),
+                        onGameQuit: ctrl.get('onGameQuitCallback').bind(ctrl)
                     });
-                    game.start();
 
                     ctrl.set('game', game);
                     
                     resolve();
                 });
             });
+        },
+
+        actions: {
+            willTransition: function(transition, route) {
+                var ctrl = this.controllerFor('play.index');
+                
+                ctrl.quitGame();
+            }
         }
     });
 });

@@ -12,8 +12,11 @@ $icon-font-path: "../fonts/";
 //endbower
 
 // wrapdeluxe variables
+// add !default to the variable in wrapdeluxe/_variables.scss
+$is-boxed: false;
 $header-fixed: false;
 $page-title-pad-y: 50px;
+$cont-pad: 70px;
 @import "../vendor/wrapdeluxe/Templates/sass/default.scss";
 
 @import "reset";

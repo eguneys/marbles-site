@@ -59743,6 +59743,9 @@ define('config',[], function() {
             musicVolume: 0.8,
             onGameEnd: function(levelData) {
                 console.log('Congratz, you finished all the levels.');
+            },
+            onGameQuit: function() {
+                console.log('Bye.');
             }
         };
     }
@@ -60563,7 +60566,7 @@ define('prefabs/options_menu',['phaser', 'config', 'prefabs/base_menu', 'prefabs
 
 
 
-define('states/main_menu',['phaser', 'prefabs/base_menu', 'prefabs/main_menu', 'prefabs/options_menu', 'prefabs/fade_tween', 'util'], function(Phaser, BaseMenu, MainMenu, OptionsMenu, FadeTween, Util) {
+define('states/main_menu',['phaser', 'config', 'prefabs/base_menu', 'prefabs/main_menu', 'prefabs/options_menu', 'prefabs/fade_tween', 'util'], function(Phaser, Config, BaseMenu, MainMenu, OptionsMenu, FadeTween, Util) {
     function MainMenuState() {}
 
     MainMenuState.States = {
@@ -60647,6 +60650,7 @@ define('states/main_menu',['phaser', 'prefabs/base_menu', 'prefabs/main_menu', '
                 this.selectPlay();
                 break;
             case MainMenu.Items.QUIT:
+                Config.options.onGameQuit.call(Config, this.levelData);
                 break;
             }
         },
@@ -61376,14 +61380,14 @@ define('states/level_intro',['phaser', 'states/level_master', 'prefabs/fade_twee
 
         tweenLevel4: function() {
             var tween = this.game.add.tween({x:0})
-                    .to({x: 1}, 9000);
+                    .to({x: 1}, 10000);
 
             return tween;
         },
 
         tweenLevel5: function() {
             var tween = this.game.add.tween({x:0})
-                    .to({x: 1}, 9000);
+                    .to({x: 1}, 8000);
 
             return tween;
         },
@@ -64553,6 +64557,10 @@ define('app',['phaser', 'config',
             game.state.start('boot');
 
             this.game = game;
+        },
+
+        destroy: function() {
+            this.game.destroy();
         },
 
         goFullScreen: function() {

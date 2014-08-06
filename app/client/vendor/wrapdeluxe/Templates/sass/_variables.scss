@@ -67,10 +67,10 @@ $boxed-pad-x: 40px; // side padding for boxed layout. Used to calculate the boxe
 $boxed-total-pad-x: $boxed-pad-x * 2; // total padding.
 $bs-pad-x: 15px; // bootstrap horizontal container padding
 $bs-total-pad-x: $bs-pad-x *2; // total padding;
-$is-boxed: true; // boxed layout true/false
+$is-boxed: true !default; // boxed layout true/false
 $header-fixed: true !default; // fixed or static header.
 $header-h: $nav-h !default; // absolute height of the header. Equals navigation height in this theme.
-$cont-pad: 70px; // content padding.
+$cont-pad: 70px !default; // content padding.
 $intro-pad-t: 120px; // intro padding.
 $intro-pad-b: 120px; // intro padding.
 $page-title-pad-y: 100px !default;
