@@ -1,5 +1,5 @@
 <section class="page-title dark-bg page-bg">
-  <div class="overlay" style="min-height:0%">
+  <div class="overlay" style="min-height:10%">
     <div class="container">
       <div class="section-title">
         <h2>Games</h2>
@@ -34,13 +34,18 @@
         <p>What feature would you like to see next?</p>
         <p>Help us improve the game.</p>
         <div class="split-buttons">
-          <a class="btn btn-primary">Vote</a>
-          <a class="btn btn-secondary">Leave Feedback</a>
+          <!--
+          <a class="btn btn-primary .popover-dismiss" data-toggle="popover" data-content="hello">Vote</a>
+          -->
+          {{#popover-link}}
+            Vote
+          {{/popover-link}}
+          {{#link-to 'about' class="btn btn-secondary"}}Leave Feedback{{/link-to}}
           <span>or</span>
         </div>
       </div>
       <div class="col-mg-2 col-lg-2">
-        <div class="service-box tts-1 margin-b-30">
+        <div id="popover-hint" class="service-box tts-1 margin-b-30">
           <i class="icon fa fa-gears color-6-bg tts-1-target"></i>
           <h4>Improve AI</h4>
           <p>More challenging levels</p>

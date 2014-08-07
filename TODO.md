@@ -1,3 +1,4 @@
+* Improve game-ui icons
 * Add poll for marbles game features
 * Improve server side
 * Set the width to full on game area

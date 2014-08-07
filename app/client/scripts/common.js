@@ -7,6 +7,7 @@ requirejs.config({
         models: '../app/models',
         views: '../app/views',
         controllers: '../app/controllers',
+        components: '../app/components',
         mixins: '../app/mixins',
         templates: '../../templates',
         ember: 'ember/ember',
@@ -31,15 +32,26 @@ requirejs.config({
             ],
             exports: 'DS'
         },
+        'bootstrap/collapse': {
+            deps: [
+                'jquery',
+                'bootstrap/transition'
+            ]
+        },
         'bootstrap/transition': {
             deps: [
                 'jquery'
             ]
         },
-        'bootstrap/collapse': {
+        'bootstrap/popover': {
             deps: [
                 'jquery',
-                'bootstrap/transition'
+                'bootstrap/tooltip'
+            ]
+        },
+        'bootstrap/tooltip': {
+            deps: [
+                'jquery'
             ]
         }
     },
