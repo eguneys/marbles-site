@@ -1,17 +1,17 @@
-// set up ===
 var express = require('express'),
-    expressHbs = require('express3-handlebars'),
     path = require('path'),
     favicon = require('serve-favicon'),
-    morgan = require('morgan'),
+    morgan = require('morgan');
     compression = require('compression');
 
 var app = express();
+
 var router = express.Router();
 
-// configuration ===
+app.use(require('connect-livereload')());
+app.use(compression());
 
-app.set('port', process.env.PORT || 3000);
+var expressHbs = require('express3-handlebars');
 
 app.engine('.hbs', expressHbs({ extname: '.hbs',
                                 defaultLayout:'main',
@@ -19,8 +19,6 @@ app.engine('.hbs', expressHbs({ extname: '.hbs',
 app.set('views', path.join(__dirname, '..', 'app', 'views'));
 app.set('view engine', '.hbs');
 
-
-// routes ==
 router.use(favicon(path.join(__dirname, '..', 'public', 'assets', 'favicon.ico')));
 router.use(morgan("dev", {}));
 router.use('/public', express.static(path.join(__dirname, '..', 'public'), { maxAge: 864000000 }));
@@ -29,12 +27,6 @@ router.get('/', function(req, res) {
     res.render('index');
 });
 
-if ('development' == app.get('env')) {
-    app.use(require('connect-livereload')());
-}
-
-app.use(compression());
-
 app.use('/', router);
 
 app.use('*', function(req, res) { 
@@ -42,4 +34,4 @@ app.use('*', function(req, res) {
     res.render('index');
 });
 
-module.exports = app;
+app.listen(3000);

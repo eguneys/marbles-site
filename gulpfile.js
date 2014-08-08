@@ -142,7 +142,7 @@ gulp.task('build-requirejs', ['build-scripts', 'build-styles'], function(cb) {
         baseUrl: 'scripts/lib',
         mainConfigFile: paths.src.common + '/scripts/common.js',
         dir: paths.dev_dist + '2',
-        optimize: 'none',
+        //optimize: 'none',
         skipDirOptimize: true,
         optimizeCss: 'none',
         modules: [
@@ -255,7 +255,7 @@ gulp.task('wiredep', function() {
 });
 
 gulp.task('serve', ['build-dev'], function() {
-    $.nodemon({ script: 'config/server.js',
+    $.nodemon({ script: 'config/app.js',
                 ignore: [
                     'node_modules/*'
                 ],

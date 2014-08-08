@@ -1,8 +1,9 @@
 {
-  "name": "gulptest",
+  "name": "marbles-site",
   "version": "0.0.0",
-  "description": "",
+  "description": "Marbles Site",
   "main": "gulpfile.js",
+  "repository": "eguneys/marbles-site",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -52,9 +53,13 @@
     "wiredep": "^1.8.1"
   },
   "dependencies": {
+    "compression": "^1.0.10",
     "express": "^4.4.5",
     "express3-handlebars": "^0.5.0",
+    "lodash": "^2.4.1",
     "morgan": "^1.1.1",
-    "serve-favicon": "^2.0.1"
+    "sequelize": "^2.0.0-dev12",
+    "serve-favicon": "^2.0.1",
+    "sqlite3": "^2.2.7"
   }
 }
