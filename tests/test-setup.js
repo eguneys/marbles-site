@@ -6,6 +6,7 @@ require.config({
         models: '../app/models',
         views: '../app/views',
         controllers: '../app/controllers',
+        components: '../app/components',
         mixins: '../app/mixins',
         templates: '../../templates',
         ember: 'ember/ember',
@@ -30,6 +31,9 @@ require.config({
             ],
             exports: 'DS'
         },
+        'ember-qunit': {
+            deps: ['ember']
+        },
         'bootstrap/transition': {
             deps: [
                 'jquery'
@@ -41,8 +45,16 @@ require.config({
                 'bootstrap/transition'
             ]
         },
-        'ember-qunit': {
-            deps: ['ember']
+        'bootstrap/popover': {
+            deps: [
+                'jquery',
+                'bootstrap/tooltip'
+            ]
+        },
+        'bootstrap/tooltip': {
+            deps: [
+                'jquery'
+            ]
         }
     }
 });

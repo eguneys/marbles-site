@@ -1,4 +1,4 @@
-define(['ember', 'app/app'], function(Ember, App) {
+define(['jquery', 'ember', 'app/app'], function($, Ember, App) {
     App.PopoverLinkComponent = Ember.Component.extend({
         // TODO is this correct hook to use
         didInsertElement: function() {

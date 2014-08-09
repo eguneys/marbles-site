@@ -1,5 +1,5 @@
 define(['controllers/play_controller'], function() {
-    moduleFor('controller:play', 'Play Controller', {
+    moduleFor('controller:play-index', 'Play Controller', {
         needs: []
     });
     

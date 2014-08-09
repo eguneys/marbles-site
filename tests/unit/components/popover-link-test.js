@@ -1,4 +1,4 @@
-define(['components/popover-link'], function() {
+define(['bootstrap/popover', 'components/popover-link'], function() {
     moduleForComponent('popover-link', 'PopoverLink Component', {
        needs: [] 
     });

@@ -1,9 +1,9 @@
 define(['app/app'], function(App) {
     module('Integration: Homepage', {
         setup: function() {
-            App.reset();
         },
         teardown: function() {
+            App.reset();
         }
     });
     
@@ -13,7 +13,7 @@ define(['app/app'], function(App) {
         visit('/');
         
         andThen(function() {
-            equal(find('h3').text().trim(), 'Play Marbles!');
+            equal(find('section.page-title h2').text().trim(), 'Lose your marbles');
             
         });
     });

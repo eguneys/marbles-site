@@ -298,23 +298,23 @@ gulp.task('watch-devserver', ['serve'], function() {
 });
 
 /*** TEST ***/
-gulp.task('test', ['build'], function(done) {
+gulp.task('test', ['build'], function() {
     var testemOptions = {
         file: 'testem.json'
     };
 
     var t = new testem();
     
-    t.startCI(testemOptions, done);
+    return t.startCI(testemOptions);
 });
 
 
-gulp.task('tdd', ['devserver'], function(done) {
+gulp.task('tdd', ['devserver'], function() {
     var testemOptions = {
         file: 'testem.json'
     };
 
     var t = new testem();
 
-    t.startDev(testemOptions, done);
+    return t.startDev(testemOptions);
 });
