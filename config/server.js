@@ -1,6 +1,6 @@
 // set up ===
 var express = require('express'),
-    expressHbs = require('express3-handlebars'),
+    expressHbs = require('express-handlebars'),
     path = require('path'),
     favicon = require('serve-favicon'),
     morgan = require('morgan'),
