@@ -8,7 +8,8 @@ var express = require('express'),
 
 var app = express();
 var router = express.Router();
-
+var apiRouter = require('../app/routes')(express);
+        
 // configuration ===
 
 app.set('port', process.env.PORT || 3000);
@@ -36,6 +37,8 @@ if ('development' == app.get('env')) {
 app.use(compression());
 
 app.use('/', router);
+
+app.use('/api/v1', apiRouter);
 
 app.use('*', function(req, res) { 
     //res.redirect(301, '/');
