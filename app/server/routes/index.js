@@ -31,7 +31,7 @@ module.exports = function(express) {
 
     router.post('/votes', function(req, res) {
         var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-        var choice = req.body.choice;
+        var choice = req.body.vote.choice;
         
         db.Vote.addVote(ip, choice, function(err, vote) {
             if (err) {
