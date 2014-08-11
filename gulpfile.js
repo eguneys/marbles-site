@@ -261,6 +261,7 @@ gulp.task('serve', ['build-dev'], function() {
                 ],
                 watch: [
                     'config/**/*.js',
+                    'app/server/**/*.js',
                     'lib'
                 ]})
         .on('restart', function() {

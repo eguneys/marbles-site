@@ -1,5 +1,5 @@
 var app = require('./server'),
-    db = require('../app/models');
+    db = require('../app/server/models');
 
 db.sequelize
     .sync({ force: true})

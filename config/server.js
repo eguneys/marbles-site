@@ -8,7 +8,7 @@ var express = require('express'),
 
 var app = express();
 var router = express.Router();
-var apiRouter = require('../app/routes')(express);
+var apiRouter = require('../app/server/routes')(express);
         
 // configuration ===
 
@@ -16,8 +16,8 @@ app.set('port', process.env.PORT || 3000);
 
 app.engine('.hbs', expressHbs({ extname: '.hbs',
                                 defaultLayout:'main',
-                                layoutsDir: 'app/views/layouts'}));
-app.set('views', path.join(__dirname, '..', 'app', 'views'));
+                                layoutsDir: 'app/server/views/layouts'}));
+app.set('views', path.join(__dirname, '..', 'app', 'server', 'views'));
 app.set('view engine', '.hbs');
 
 
