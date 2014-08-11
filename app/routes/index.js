@@ -1,8 +1,12 @@
+var bodyParser = require('body-parser');
+
 var db = require('../models');
 
 module.exports = function(express) {
     var router = express.Router();
 
+    router.use(bodyParser.json());
+    
     router.get('/polls', function(req, res) {
         db.Poll.findAll({
             include: [{ model: db.Choice, as: 'choices' }]
@@ -13,26 +17,27 @@ module.exports = function(express) {
         });
     });
 
-    router.get('/poll/:id', function(req, res) {
-        db.Choice.findAll({
-            where: { PollId: req.params['id'] },
-            include: [{model: db.Vote, as: 'votes' }]
-        }).success(function(votes) {
+    router.get('/polls/:id', function(req, res) {
+
+        db.Poll.find({
+            where: { id: req.params.id },
+            include: [{model: db.Choice, as: 'choices' }]
+        }).success(function(poll) {
             res.send({
-                choices: votes
+                poll: poll
             });
         });
     });
 
-    router.post('/vote/:choice_id', function(req, res) {
+    router.post('/votes', function(req, res) {
         var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-        var choice = req.params['choice_id'];
+        var choice = req.body.choice;
         
         db.Vote.addVote(ip, choice, function(err, vote) {
             if (err) {
-                res.send({ error: err });
+                res.send(err);
             } else {
-                res.send({ success: vote });
+                res.send({ vote: vote });
             }
         });
     });

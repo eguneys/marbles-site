@@ -54,6 +54,7 @@
     "wiredep": "^1.8.1"
   },
   "dependencies": {
+    "body-parser": "^1.6.3",
     "compression": "^1.0.10",
     "express": "^4.4.5",
     "lodash": "^2.4.1",

@@ -38,7 +38,9 @@
           <a class="btn btn-primary .popover-dismiss" data-toggle="popover" data-content="hello">Vote</a>
           -->
           {{#popover-link}}
-            Vote
+            <div {{ action 'vote' }}>
+              Vote
+            </div>
           {{/popover-link}}
           {{#link-to 'about' class="btn btn-secondary"}}Leave Feedback{{/link-to}}
           <span>or</span>
