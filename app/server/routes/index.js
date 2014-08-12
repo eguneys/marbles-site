@@ -1,46 +1,31 @@
-var bodyParser = require('body-parser');
+var fs = require('fs'),
+    path = require('path'),
+    lodash = require('lodash'),
+    express = require('express'),
+    bodyParser = require('body-parser');
 
-var db = require('../models');
 
-module.exports = function(express) {
-    var router = express.Router();
 
-    router.use(bodyParser.json());
-    
-    router.get('/polls', function(req, res) {
-        db.Poll.findAll({
-            include: [{ model: db.Choice, as: 'choices' }]
-        }).success(function(polls) {
-            res.send({
-                polls: polls
-            });
-        });
+var publicRouter = express.Router();
+var apiRouter = express.Router();
+
+apiRouter.use(bodyParser.json());
+
+fs.readdirSync(__dirname)
+    .filter(function(file) {
+        return (file.indexOf('.') !== 0) && (file !== 'index.js');
+    })
+    .forEach(function(file) {
+        var name = file.split('.')[0];
+        if (!!name.match(/api-/)) {
+            require(path.join(__dirname, file))(apiRouter);
+        } else {
+            require(path.join(__dirname, file))(publicRouter);
+        }
     });
 
-    router.get('/polls/:id', function(req, res) {
-
-        db.Poll.find({
-            where: { id: req.params.id },
-            include: [{model: db.Choice, as: 'choices' }]
-        }).success(function(poll) {
-            res.send({
-                poll: poll
-            });
-        });
-    });
-
-    router.post('/votes', function(req, res) {
-        var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-        var choice = req.body.vote.choice;
-        
-        db.Vote.addVote(ip, choice, function(err, vote) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.send({ vote: vote });
-            }
-        });
-    });
-    
-    return router;
+module.exports = {
+    apiRouter: apiRouter,
+    publicRouter: publicRouter
 };
+
