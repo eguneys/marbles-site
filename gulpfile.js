@@ -1,9 +1,11 @@
 'use strict';
 
-// npm install --save-dev gulp gulp-load-plugins gulp-util gulp-autoprefixer gulp-cache gulp-imagemin gulp-bower-files gulp-filter gulp-ignore gulp-flatten gulp-csso gulp-useref gulp-if gulp-uglify gulp-rimraf gulp-size gulp-jshint jshint-stylish gulp-livereload gulp-nodemon wiredep bower-requirejs requirejs gulp-debug gulp-changed gulp-concat gulp-ember-templates gulp-insert gulp-plumber merge-stream gulp-sass gulp-grep-stream gulp-rename rimraf mv
+// npm install --save-dev gulp gulp-load-plugins gulp-util gulp-autoprefixer gulp-cache gulp-imagemin main-bower-files gulp-filter gulp-ignore gulp-flatten gulp-csso gulp-useref gulp-if gulp-uglify gulp-rimraf gulp-size gulp-jshint jshint-stylish gulp-livereload gulp-nodemon wiredep bower-requirejs requirejs gulp-debug gulp-changed gulp-concat gulp-ember-templates gulp-insert gulp-plumber merge-stream gulp-sass gulp-grep-stream gulp-rename rimraf mv
 
 var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
+var $ = require('gulp-load-plugins')({
+    pattern: '{gulp-*,main-*}'
+});
 var runSequence = require('run-sequence');
 var rimraf = require('rimraf');
 var mv = require('mv');
@@ -49,7 +51,7 @@ gulp.task('build-dev-images', function() {
 gulp.task('build-dev-fonts', function() {
     var streamqueue = require('streamqueue');
     return streamqueue({objectMode: true},
-                       $.bowerFiles()
+                       gulp.src($.mainBowerFiles())
                        .pipe($.flatten()),
                        gulp.src(paths.src.common + '/vendor/**/*'),
                        gulp.src(paths.src.common + '/fonts/**/*')
