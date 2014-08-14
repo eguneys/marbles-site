@@ -1,10 +1,11 @@
+var async = require('async');
 var db = require('../models');
 
 module.exports = function(router) {
     
     router.get('/polls', function(req, res) {
         db.Poll.findAll({
-            include: [{ model: db.Choice, as: 'choices' }]
+            //include: [{ model: db.Choice, as: 'choices' }]
         }).success(function(polls) {
             res.send({
                 polls: polls
@@ -18,8 +19,16 @@ module.exports = function(router) {
             where: { id: req.params.id },
             include: [{model: db.Choice, as: 'choices' }]
         }).success(function(poll) {
-            res.send({
-                poll: poll
+            async.map(poll.choices, function(choice, callback) {
+                db.Vote.findCount(choice.id, function(err, count) {
+                    choice.setDataValue('count', count);
+                    callback(err, choice);
+                });
+            }, function(err, results) {
+                poll.setDataValue('choices', results);
+                res.send({
+                    poll: poll
+                });
             });
         });
     });
@@ -32,10 +41,20 @@ module.exports = function(router) {
             if (err) {
                 res.send(err);
             } else {
-                res.send({ vote: vote });
+                res.send({ votes: vote });
             }
         });
     });
-    
-    return router;
+
+    router.get('/votes/:choiceId', function(req, res) {
+        var choice = req.params.choiceId;
+
+        db.Vote.findCount(choice, function(err, count) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send({ vote: count });
+            }
+        });
+    });
 };

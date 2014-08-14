@@ -15,25 +15,6 @@ module.exports = function(sequelize, DataTypes) {
                 // choices where votes.choiceId == choices.id
                 // );
                 
-                // Vote.find({
-                //     where: Sequelize
-                //         .and({ ip: ip },
-                //              { ChoiceId: choice })
-                // })
-                    // .success(function(vote) {
-                    //     if (!vote) {
-                    //         Vote.create({
-                    //             ip: ip,
-                    //             ChoiceId: choice
-                    //         })
-                    //         .success(function(vote) {
-                    //             callback(null, vote);
-                    //         });
-                    //     } else {
-                    //         callback("Vote already exists");
-                    //     }
-
-                
                 Poll.findAll({ where: Sequelize.and(
                     {
                         'choices.id': choice
@@ -47,7 +28,6 @@ module.exports = function(sequelize, DataTypes) {
                                    model: Choice, as: 'choices',
                                    include: [{ model: Vote, as: 'votes' }]}]
                              }).success(function(votes) {
-                                 console.log(votes);
                                  if (!votes || votes.length === 0) {
                                      Vote.create({
                                          ip: ip,
@@ -60,12 +40,21 @@ module.exports = function(sequelize, DataTypes) {
                                      callback("Vote already exists");
                                  }
                              });
+            },
+
+            findCount: function(choiceId, callback) {
+                Vote.count({
+                    where: { 'ChoiceId': choiceId}
+                }).success(function(count) {
+                    callback(null, count);
+                });
             }
         }
     });
     
     var Choice = sequelize.define('Choice', {
-        text: DataTypes.STRING
+        text: DataTypes.STRING,
+        description: DataTypes.STRING
     }, {
         classMethods: {
             associate: function(models) {
