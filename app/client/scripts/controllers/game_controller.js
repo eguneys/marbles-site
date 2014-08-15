@@ -20,34 +20,29 @@ define(['ember', 'app/app'], function(Ember, App) {
                 return item;
             });
             return choices;
-        }.property('poll'),
+        }.property('poll.choices'),
         
         actions: {
             vote: function(choice) {
+                var choices = this.get('poll.choices');
+
+                var vote = this.store.createRecord('vote', {
+                    choice: choices.findBy('id', '' + choice)
+                });
+
                 var self = this;
-
-                // first poll is lym
-                var poll = this.store.find('poll', 1)
-                        .then(function(poll) {
-
-                            var vote = this.store.createRecord('vote', {
-                                choice: poll.get('choices').objectAt(choice)
-                            });
-
-                            vote.save().then(function(vote) {
-                                //console.log('success ' + vote);
-                                self.send('showResults');
-                            }, function(vote) {
-                                //console.log(vote.responseText);
-                                self.send('showResults');
-                            });
-                            
-
-                        }.bind(this));
+                
+                vote.save().then(function(vote) {
+                    self.send('showResults');
+                }, function(vote) {
+                    self.send('showResults');
+                });
             },
 
             showResults: function() {
-                this.set('showResults', true);
+                this.get('model').reload().then(function() {
+                    this.set('showResults', true);
+                }.bind(this));
             },
 
             hideResults: function() {

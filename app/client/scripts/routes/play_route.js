@@ -1,6 +1,7 @@
 define(['ember', 'app/app', 'templates/play', 'controllers/play_controller'], function(Ember, App) {
 
     App.PlayRoute = Ember.Route.extend({
+        
         renderTemplate: function() {
             var ctrl = this.controllerFor('play.index');
             

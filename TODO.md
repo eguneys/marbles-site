@@ -1,6 +1,11 @@
-* Improve game-ui icons
+* Fix ember-data find slug
+* Fix ember-data r.js optimize
+
 * Add poll for marbles game features
-* Improve server side
-* Set the width to full on game area
 * Kill the Phaser when route is changed
   - page reload on route change, game over
+
+* Improve server side
+
+* Improve game-ui icons
+* Set the width to full on game area

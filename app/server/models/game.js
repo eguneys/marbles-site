@@ -26,7 +26,25 @@ module.exports = function(sequelize, DataTypes) {
                         callback(null, game);
                     }
                 });
+            },
+            
+            findById: function(models, id, callback) {
+                Game.find({
+                    where: { id: id },
+                    include: [{
+                        model: models.Poll, as: 'poll',
+                        include: [{model: models.Choice, as: 'choices'}]
+                    }]
+                }).success(function(game) {
+                    if (!game) {
+                        // TODO 
+                        callback("Error: bad game");
+                    } else {
+                        callback(null, game);
+                    }
+                });
             }
+
         }
     });
 

@@ -6,6 +6,7 @@ define(['ember-data', 'app/app'], function(DS, App) {
 
     App.Choice = DS.Model.extend({
         text: DS.attr('string'),
+        description: DS.attr('string'),
         count: DS.attr('number'),
         votes: DS.hasMany('vote'),
         poll: DS.belongsTo('poll')

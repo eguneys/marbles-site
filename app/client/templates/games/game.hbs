@@ -57,30 +57,16 @@
           {{/each}}
         </div>
         {{else}}
-        <div class="col-md-3 col-lg-3">
-          <div class="service-box tts-1 margin-b-30">
-            <i class="icon fa fa-gears color-6-bg tts-1-target"></i>
-            <h4>Improve AI</h4>
-            <p>More challenging levels</p>
-            <a class="btn btn-secondary" {{ action 'vote' 0 }}> Vote </a>
+        {{#each pollChoices }}
+          <div class="col-md-3 col-lg-3">
+            <div class="service-box tts-1 margin-b-30">
+              <i class="icon fa fa-gears color-6-bg tts-1-target"></i>
+              <h4>{{text}}</h4>
+              <p>{{description}}</p>
+              <a class="btn btn-secondary" {{ action 'vote' id }}> Vote </a>
+            </div>
           </div>
-        </div>
-        <div class="col-md-3 col-lg-3">
-          <div class="service-box tts-1 margin-b-30">
-            <i class="icon fa fa-users color-6-bg tts-1-target"></i>
-            <h4>Multiplayer</h4>
-            <p>Play online with friends</p>
-            <a class="btn btn-secondary" {{ action 'vote' 1 }}> Vote </a>
-          </div>
-        </div>
-        <div class="col-md-3 col-lg-3">
-          <div class="service-box tts-1 margin-b-30">
-            <i class="icon fa fa-th-large color-6-bg tts-1-target"></i>
-            <h4>Modern Art</h4>
-            <p>Redesign the game with custom art</p>
-            <a class="btn btn-secondary" {{ action 'vote' 2 }}> Vote </a>
-          </div>
-        </div>
+        {{/each}}
       {{/if}}
     </div>
   </div>

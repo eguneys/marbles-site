@@ -13,7 +13,10 @@ module.exports = function(router) {
 
     router.get('/games/:slug', function(req, res) {
         var slug = req.params.slug;
-        db.Game.findBySlug(db, slug, function(err, game) {
+
+        // can't support slugs for now
+        //db.Game.findBySlug(db, slug, function(err, game) {
+        db.Game.findById(db, slug, function(err, game) {
             if (err) {
                 res.send(err);
             } else {
