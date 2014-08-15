@@ -1,6 +1,6 @@
 define ['models/game_model'], ->
     moduleForModel 'game', 'Game Model', {
-        needs: []
+        needs: ['model:poll']
     }
 
     test 'exists', ->

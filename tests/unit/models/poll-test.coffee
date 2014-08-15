@@ -1,6 +1,6 @@
 define ['models/poll_model'], ->
     moduleForModel 'poll', 'Poll Model', {
-        needs: []
+        needs: ['model:choice']
     }
 
     test 'exists', ->

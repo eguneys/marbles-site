@@ -1,5 +1,5 @@
 define ['controllers/game_controller'], ->
-    moduleFor 'controller:game', 'Game Controller', {
+    moduleFor 'controller:games.game', 'Game Controller', {
         needs: []
     }
     
