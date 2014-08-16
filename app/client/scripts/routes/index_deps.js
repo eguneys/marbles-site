@@ -1,1 +1,1 @@
-define([]);
+define(['controllers/index_controller']);

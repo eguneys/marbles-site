@@ -44,7 +44,7 @@ module.exports = function(router) {
             if (err) {
                 res.send(err);
             } else {
-                res.send({ votes: vote });
+                res.send(vote);
             }
         });
     });

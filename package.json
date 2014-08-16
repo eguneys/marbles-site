@@ -2,10 +2,10 @@
   "name": "marbles-site",
   "version": "0.0.0",
   "description": "Marbles Site",
-  "main": "gulpfile.js",
   "repository": "eguneys/marbles-site",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node config/app",
+    "test": "gulp test"
   },
   "author": "",
   "license": "ISC",
