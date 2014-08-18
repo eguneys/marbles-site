@@ -9,7 +9,9 @@ var fs = require('fs'),
 var publicRouter = express.Router();
 var apiRouter = express.Router();
 
-apiRouter.use(bodyParser.json());
+apiRouter.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 fs.readdirSync(__dirname)
     .filter(function(file) {
