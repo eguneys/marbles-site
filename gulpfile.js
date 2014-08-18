@@ -198,6 +198,8 @@ gulp.task('build', ['build-optimize'], function() {
     return gulp.src(paths.dev_dist + '/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
+gulp.task('default', ['build']);
+
 //---
 // Dev Tasks
 //---
