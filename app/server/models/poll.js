@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
                     },
                     {id: 
                      { in:
-                       Sequelize.literal('select pollId from Votes, choices where Votes.choiceId == choices.id and votes.ip == \'' + ip + '\'')
+                       Sequelize.literal('select "Choices"."PollId" from "Votes", "Choices" where "Votes"."ChoiceId" = "Choices"."id" and "Votes"."ip" = \'' + ip + '\'')
                      }
                     }),
                                include: [ {

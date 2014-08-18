@@ -13,7 +13,7 @@ define(['app/app'], function(App) {
         visit('/');
         
         andThen(function() {
-            equal(find('section.page-title h2').text().trim(), 'Lose your marbles');
+            equal(find('section.page-title h2').text().trim(), 'A fun and easy way to play games');
             
         });
     });
