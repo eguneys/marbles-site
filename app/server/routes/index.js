@@ -10,8 +10,10 @@ var publicRouter = express.Router();
 var apiRouter = express.Router();
 
 apiRouter.use(bodyParser.urlencoded({
-    extended: true
+    extended: false
 }));
+
+apiRouter.use(bodyParser.json());
 
 fs.readdirSync(__dirname)
     .filter(function(file) {
