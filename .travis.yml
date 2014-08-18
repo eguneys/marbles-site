@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - '0.10'
+before_install:
+  - currentfolder=${PWD##*/}
+  - if [ "$currentfolder" != 'marbles-site' ]; then cd .. && eval "mv $currentfolder marbles-site" && cd marbles-site; fi
+  - npm install -g bower
+  - bower install
