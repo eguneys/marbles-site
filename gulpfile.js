@@ -146,8 +146,12 @@ gulp.task('build-requirejs', ['build-scripts', 'build-styles'], function(cb) {
         dir: paths.dev_dist + '2',
         //optimize: 'none',
         skipDirOptimize: true,
-        optimizeCss: 'none',
+        optimizeCss: 'default',
         modules: [
+            {
+                name: 'requirejs',
+                include: ['requirejs']
+            },
             {
                 name: 'app/common',
                 include: ['app/main']

@@ -18,7 +18,9 @@ if ('development' == app.get('env')) {
     app.use(require('connect-livereload')());
 }
 
-app.use(compression());
+app.use(compression({
+    threshold: 512
+}));
 
 app.use('/', routes.publicRouter);
 

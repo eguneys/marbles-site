@@ -1,3 +1,7 @@
+* Marbles game preload animation
+* form validation, notification
+* 
+
 * Fix ember-data find slug
 * Fix ember-data r.js optimize
 
