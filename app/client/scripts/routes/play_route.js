@@ -27,7 +27,9 @@ define(['ember', 'app/app', 'templates/play', 'controllers/play_controller'], fu
         },
 
         deactivate: function() {
-            window.location.reload();
+            Ember.run.later(this, function() {
+                window.location.reload(true);
+            }, 200);
         }
     });
 });

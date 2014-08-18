@@ -28,14 +28,15 @@
           <div class="col-sm-4 col-md-4">
             <h5>newsletter</h5>
             <p>Get the latest news and updates delivered straight to your email.</p>
-            <div class="input-group newsletter-signup">
-              <input type="text" class="form-control" placeholder="Email Address">
-              <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">sign up</button>
-              </span>
-            </div>
+            <form {{action "submitNewsletter" on="submit"}}>
+              <div class="input-group newsletter-signup">
+                {{input type="text" name="email" value=email class="form-control" placeholder="Email Address"}}
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="button">sign up</button>
+                </span>
+              </div>
+            </form>
           </div>
-          
         </div>
       </div>
     </div>
@@ -45,8 +46,10 @@
         <ul class="social-buttons colored-bg-on-hover round clearfix">
           <li><a href="#"><i class="fa fa-facebook"></i></a></li>
           <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <!--
           <li><a href="#"><i class="fa fa-rss"></i></a></li>
           <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+          -->
         </ul>
 
         <span class="copy-text">Copyright &copy; 2014 Emre Guneyler. All rights reserved.</span>

@@ -1,3 +1,4 @@
+var db = require('../models');
 var Emailer = require('../../../lib/emailer');
 
 var MANDRILL_USERNAME = process.env.MANDRILL_USERNAME,
@@ -26,10 +27,21 @@ module.exports = function(router) {
 
         emailer.send(function(err, result) {
             if (err) {
-                console.log(err);
                 res.status(err.responseCode).end();
             } else {
                 res.status(200).end();
+            }
+        });
+    });
+
+    router.post('/newsletter', function(req, res) {
+        var data = req.body;
+
+        db.Newsletter.addEmail(data.email, function(err, newsletter) {
+            if (err) {
+                res.status(err.responseCode).end();
+            } else {
+                res.send(newsletter);
             }
         });
     });
