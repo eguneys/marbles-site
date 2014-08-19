@@ -10,7 +10,7 @@
   </div>
 </section>
 
-<section id="play-game" class="content-block default-bg play-game" {{bind-attr class="isPlaying"}}>
+<section id="play-game" class="content-block default-bg play-game" {{bind-attr class="isPlaying isLoading:hidden"}}>
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12">
@@ -31,6 +31,11 @@
             </div>
             <div class="game-area-wrap">
               <div id="game-area" class="game-area"></div>
+              <div {{bind-attr class=":game-load-progress hideProgressBar:hidden"}}>
+                <div class="progress white-bg">
+                  {{progress-bar loadProgress ""}}
+                </div>
+              </div>
               <div class="game-actions">
                 <a data-toggle="tooltip" title="Fullscreen" {{action 'fullscreen'}}>
                   <i class="icon fa fa-square-o fa-4x fa-inverse"></i>
@@ -46,3 +51,18 @@
     </div>
   </div>
 </section>
+
+
+
+<section id="load-game" class="content-block default-bg load-game" {{bind-attr class="isLoading::hidden"}}>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <div class="loader-wrap text-center">
+          <i class="fa fa-circle-o-notch fa-spin fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  

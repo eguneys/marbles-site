@@ -16,7 +16,9 @@ define(['ember', 'app/app', 'templates/play', 'controllers/play_controller'], fu
                         sfxVolume: 1,
                         musicVolume: 1,
                         onGameEnd: ctrl.get('onGameEndCallback').bind(ctrl),
-                        onGameQuit: ctrl.get('onGameQuitCallback').bind(ctrl)
+                        onGameQuit: ctrl.get('onGameQuitCallback').bind(ctrl),
+                        onLoadUpdate: ctrl.get('onGameLoadUpdateCallback').bind(ctrl),
+                        onLoadComplete: ctrl.get('onGameLoadCompleteCallback').bind(ctrl)
                     });
 
                     ctrl.set('game', game);

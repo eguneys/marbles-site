@@ -11,7 +11,7 @@ define(['ember'], function(Ember) {
 
         var percent = Math.min(value, 100);
         
-        var barType = barTypes[Math.floor(percent / 25)];
+        var barType = barTypes[Math.floor((percent - 1) / 25)];
                 
         return new Ember.Handlebars
             .SafeString('<div class="progress-bar ' +
