@@ -146,7 +146,8 @@ gulp.task('build-requirejs', ['build-scripts', 'build-styles'], function(cb) {
         dir: paths.dev_dist + '2',
         //optimize: 'none',
         skipDirOptimize: true,
-        optimizeCss: 'default',
+        optimizeCss: 'standard',
+        preserveLicenseComments: false,
         modules: [
             {
                 name: 'requirejs',
