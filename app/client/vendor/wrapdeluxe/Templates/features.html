@@ -36,7 +36,7 @@
       <header id="header">
       
         <!-- Top Bar -->
-        <div id="top-bar">
+        <div id="top-bar" class="open">
 
           <!-- Container -->
           <div class="container">
@@ -64,7 +64,7 @@
         <!-- /Top Bar -->
 
         <!-- Main Navigation -->
-        <div  id="main-nav" class="navbar navbar-default">
+        <div  id="main-nav" class="navbar navbar-default hide-icons">
 
           <!-- Container -->
           <div class="container" >
@@ -75,7 +75,7 @@
                 <span class="fa fa-bars fa-lg"></span>
               </button>
               <a href="index.html" class="navbar-brand">
-                <h1><i class="fa fa-bell alt-color"></i>Deluxer.</h1>
+                <i class="fa fa-graduation-cap alt-color"></i>Delu<span class="color-1">xer</span>
               </a>
             </div>
             <!-- /header-->
@@ -85,8 +85,8 @@
             
               <!-- Nav Buttons -->
               <ul class="nav navbar-nav nav-buttons navbar-right">
-                <li><a class="nav-btn" href="contact.html"><i class="fa fa-envelope"></i><span class="xs-only">contact</span></a></li>
-                <li><a class="nav-btn bg-2 top-bar-toggle" href="#top-bar" data-custom-toggle="slide" data-class="open" data-target="#top-bar"><span class="symbol"></span></a></li>
+                <li><a class="nav-btn bg-1" href="contact.html"><i class="fa fa-envelope"></i><span class="xs-only">contact</span></a></li>
+                <li><a class="nav-btn top-bar-toggle open" href="#top-bar" data-custom-toggle="slide" data-class="open" data-target="#top-bar"><span class="symbol"></span></a></li>
               </ul>
               <!-- /Nav Buttons -->
               
@@ -141,7 +141,7 @@
       ================================================== -->
       <section class="page-title dark-bg page-bg">
         <!-- Overlay -->
-        <div class="overlay">
+        <div class="overlay default">
           <!-- Container -->
           <div class="container">
           
@@ -161,7 +161,7 @@
       <!-- /Page Title
       ================================================== -->
       
-      <!-- Page Info Block
+      <!-- Page Info
       ================================================== -->
       <section class="page-info-block">
       
@@ -169,23 +169,15 @@
         <div class="container">
           <!-- Page Info -->
           <div  class="page-info clearfix">
-          
-            <!-- Links -->
-            <ul class="page-links pull-left">
-                <li><a href="#" ><i class="fa fa-home bg-1"></i></a></li>
-                <li><a href="#" ><i class="fa fa-arrow-left bg-2"></i></a></li>
-                <li><a href="#" ><i class="fa fa-arrow-right bg-2"></i></a></li>
-            </ul>
-            <!-- /Links -->
-            
+
             <!-- Breadcrumb -->
             <ol class="breadcrumb pull-left">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Pages</a></li>
-              <li class="active">features</li>
+              <li><a href="#"><i class="fa fa-home"></i></a></li>
+              <li><a href="#">bread</a></li>
+              <li class="active">crumbs</li>
             </ol>
             <!-- /Breadcrumb -->
-
+            
             <!-- Search -->
             <div class="search page-search pull-right">
               <form method="get" action="#">
@@ -198,12 +190,13 @@
             </div>
             <!-- /Search -->
             
-            <!-- Links -->
+             <!-- Links -->
             <ul class="page-links pull-right">
-                <li><a href="#" class=""><i class="fa fa-print bg-2"></i></a></li>
+              <li><a href="#" ><i class="fa fa-share bg-3"></i></a></li>
+              <li><a href="#" ><i class="fa fa-print bg-2"></i></a></li>
             </ul>
             <!-- /Links -->
-
+            
           </div>
           <!-- /Page-info -->
         </div>
@@ -876,13 +869,32 @@
           <li style="background:#2C3E50" data-sheet="css/skin-5.css"><span style="background:#82B440"></span></li>
           <li style="background:#34495E" data-sheet="css/skin-6.css"><span style="background:#1ABC9C"></span></li>
         </ul>
-        <h5>Backgrounds</h5>
-        <ul class="bgs clearfix">
-          <li style="background:url(images/backgrounds/cover1.jpg) no-repeat center 0 fixed; -moz-background-size: cover; -webkit-background-size: cover; -ms-background-size: cover; background-size: cover;"></li>
-          <li style="background:url(images/backgrounds/cover2.jpg) no-repeat center 0 fixed; -moz-background-size: cover; -webkit-background-size: cover; -ms-background-size: cover; background-size: cover;"></li>
-          <li style="background:url(images/backgrounds/cover3.jpg) no-repeat center 0 fixed; -moz-background-size: cover; -webkit-background-size: cover; -ms-background-size: cover; background-size: cover;"></li>
-          <li style="background:url(images/backgrounds/cover4.jpg) no-repeat center 0 fixed; -moz-background-size: cover; -webkit-background-size: cover; -ms-background-size: cover; background-size: cover;"></li>
-        </ul>
+        <h5>Page Background</h5>
+        <div class="radio-inline">
+          <label>
+          <input type="radio" name="bg" class="input-pagebg" value="solid" checked>
+          Solid
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+          <input type="radio" name="bg" class="input-pagebg" value="picture">
+          Picture
+          </label>
+        </div>
+        <h5>Content Bg</h5>
+        <div class="radio-inline">
+          <label>
+          <input type="radio" name="bg2" class="input-contbg" value="solid">
+          Solid
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+          <input type="radio" name="bg2" class="input-contbg" value="picture" checked>
+          Picture
+          </label>
+        </div>
 
       </div>
     </div>

@@ -1,7 +1,8 @@
 #main-nav.navbar-default {
     .navbar-brand {
-        h1 {
-            font-weight: bold;
+        padding: 10px;
+        svg {
+            margin-bottom: -5px;
         }
     }
 }

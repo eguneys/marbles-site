@@ -10,19 +10,39 @@ html {
 }
 
 body {
-  background: rgba(#fff, 0.7);
+  background: tint($color-2, 85%);
   display: block;
   min-height: 100%;
+  
+  &.overlay {
+    background: rgba(tint($color-2, 85%), 0.7);
+  }
 }
 
 #page-wrapper {
   margin: 0 auto;
   background: none;
-  @include vendorize(box-shadow, "0 0 15px rgba(0, 0, 0, 0.2)");
 }
-
 /* CONTENT BLOCKS
 -------------------------------------------------- */
+
+.overlay {
+  min-height: 100%;
+  
+  &.default {
+    background: rgba($color-2, 0.8);
+  }
+  
+  &.tint {
+    background: rgba(#fff, 0.9);
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    
+    &.no-border {
+      border: none;
+    }
+  }
+}
 
 .content-block {
 
@@ -30,25 +50,6 @@ body {
     background: #fff;
   }
   
-  .overlay {
-    min-height: 100%;
-    
-    &.default {
-      background: rgba($color-2, 0.8);
-    }
-    
-    &.tint {
-      background: rgba(#fff, 0.9);
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      
-      &.no-border {
-        border: none;
-      }
-    }
-  }
-  
-
   .container {
     padding-top: $cont-pad;
     padding-bottom: $cont-pad;
@@ -74,19 +75,8 @@ body {
 
 .intro-block {
 
-  .overlay {
-    min-height: 100%;
-
-      background: rgba($color-2, 0.8);
-  }
-
   .container {
-
-    @if $header-fixed {
-      padding-top: $intro-pad-t + $header-h;
-    } @else {
-      padding-top: $intro-pad-t;
-    }
+    padding-top: $intro-pad-t;
     padding-bottom: $intro-pad-b;
    
     @media (max-width: 767px) {
@@ -115,21 +105,13 @@ body {
 
 .page-title {
 
-  .overlay {
-    min-height: 100%;
-    background: rgba($color-2, 0.8);
-  }
   .section-title {
     margin: 0;
   }
 
   .container {
   
-    @if $header-fixed {
-      padding-top: $page-title-pad-y + $header-h;
-    } @else {
-      padding-top: $page-title-pad-y;
-    }
+    padding-top: $page-title-pad-y;
     padding-bottom: $page-title-pad-y;
     
     @media (max-width: 767px) {
@@ -164,19 +146,18 @@ body {
   
   p {
     display: inline-block;
-    margin: 10px 0 0 0;
+    margin: 15px 0 0 0;
     font-size: 18px;
-    font-family: $title-font-2;
+    font-weight: $light;
     color: #888;
     text-transform: capitalize;
-    font-weight: normal;
   }
   
   .line {
     display: block;
     width: 80px;
     margin: 0 auto;
-    height: 4px;
+    height: 2px;
     background: $color-1;
     position:relative;
     
@@ -258,42 +239,45 @@ body {
 .page-info {
 
   padding-bottom: 20px;
-  border-bottom: 2px solid tint($color-2, 20%);
+  border-bottom: 1px solid tint($color-2, 20%);
+  
+  .search {
+  margin-left:0;
+  }
   
   .breadcrumb {
-    margin-left:20px;
     li {
-      text-transform: capitalize;
-      line-height: 35px;
-      color: $color-2;
+      color: $color-1;
+      line-height:35px;
+      font-size: 14px;
       
-      a:hover {
-        color: $color-2;
+      i {
+        background:tint($color-2, 90%);
+        @include round-icon(35px);
       }
     }
   }
+  
+
    
   .page-links {
     @include no-list();
     display: inline-block;
+    font-size:0;
     
-    li { display: inline-block }
+    li { 
+      display: inline-block;
+      font-size: 13px;
+      margin:0 3px;
+    }
     
     i {
       text-align: center;
       display: inline-block;
       @include round-icon(35px);
-      background: tint(#000, 90%);
+      background: tint($color-2, 85%);
       color: $color-2;
       @include vendorize(border-radius, 50%);
-    
-      &.bg-1 {
-        background: $color-1;
-        color:#fff;
-        &:hover {
-          background: shade($color-1, 10%);
-        }
-      }
       
       &.bg-2 {
         background: tint($color-2, 15%);
@@ -301,9 +285,10 @@ body {
       }
       
       &.bg-3 {
-        background: tint($color-2, 25%);
-        color:#fff;
+        background: tint($color-2, 85%);
+        color: $color-2;
       }
+      
     }
 
     a {
@@ -349,29 +334,7 @@ body {
       }
     }
     
-    .page-search {
-    
-      &.open { 
-        width: 180px;
-      }
-      
-      input {
-        height: 30px;
-      }
-      
-      .search-btn {
-        height: 30px;
-        width: 30px;
-      }
-      .toggle {
-        @include round-icon(30px);
-        
-        &:before {
-          font-size:13px;
-        }
-      }
-    
-    }
+
   
   }
 }
@@ -390,12 +353,12 @@ body {
     text-transform: uppercase;
     margin: 0 0 20px 0;
     padding: 0 20px;
-    line-height: 45px;
+    line-height: 50px;
 }
 .widget-title  i {
     float: right;
     display: inline-block;
-    line-height: 45px;
+    line-height: 50px;
 }
 
 

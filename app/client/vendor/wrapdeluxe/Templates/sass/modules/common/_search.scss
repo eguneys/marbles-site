@@ -22,7 +22,7 @@
   input {
     background: none repeat scroll 0 0 #F7F8F8;
     border: 0px solid #ddd;
-    color: #888;
+    color: tint($color-2, 5%);
     height: 35px;
     padding: 0 10px 0 35px;
     width: 100%;
@@ -45,7 +45,7 @@
     width: 35px;
     z-index: 3;
     text-align: center;
-    color: #888;
+    color: tint($color-2, 45%);
     @include vendorize(border-radius, "50%");
     
     &:after {
@@ -86,10 +86,15 @@
       right: 1px;
       z-index: 400;
     }
-    
-    &.open:before {
-      content: "\f00d";
+    &.open {
+      background: $color-2;
+      color: #fff;
+      &:before {
+        content: "\f00d";
+      }
+      
     }
+
   }
 
 }

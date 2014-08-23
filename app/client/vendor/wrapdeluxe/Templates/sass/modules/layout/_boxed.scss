@@ -11,12 +11,14 @@
         $boxed-w: ($cont-max - $bs-total-pad-x) + $boxed-total-pad-x;
         max-width: $boxed-w;
         
-        #header { width: $boxed-w; }
-        
         .container {
           max-width: $cont-max!important;
           width:auto!important;
         }
+        #top-bar, #main-nav {
+          max-width: $boxed-w;
+        }
+        
       }
       @media (min-width: 992px) {
       
@@ -24,7 +26,9 @@
         $boxed-w: ($cont-max - $bs-total-pad-x) + $boxed-total-pad-x;
         max-width: $boxed-w;
         
-        #header { width: $boxed-w; }
+        #top-bar, #main-nav {
+          max-width: $boxed-w;
+        }
         
         .container {
           max-width: $cont-max!important;
@@ -37,7 +41,9 @@
         $boxed-w: ($cont-max - $bs-total-pad-x) + $boxed-total-pad-x;
         max-width: $boxed-w;
         
-        #header { width: $boxed-w; }
+          #top-bar, #main-nav {
+          max-width: $boxed-w;
+        }
         
         .container {
           max-width: $cont-max!important;

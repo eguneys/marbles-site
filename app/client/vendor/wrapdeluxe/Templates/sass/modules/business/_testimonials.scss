@@ -7,7 +7,7 @@ $quote-color: #888;
 .testimonial {
 
 	.avatar {
-		width: 18%;
+		width: 16%;
 		float: left;
 		
 		img {
@@ -21,17 +21,18 @@ $quote-color: #888;
 	
 	.quote-box {
 	
-		width: 75%;
+		width: 76%;
 		float: right;
 		padding: 0;
 		
 		.author {
 			margin: 15px 0 0 0;
-			font: normal 14px $title-font-2;
+			font: $light 14px $title-font-2;
       color: $quote-color;
 			
 			strong { 
 				margin-right:5px;
+        font-weight: $semibold;
 			}
 		}
 		
@@ -41,12 +42,13 @@ $quote-color: #888;
 			background: $quote-bg;
 			width: 100%;
 			border: 0;
-			padding: 20px;
+			padding: 30px 20px;
 			line-height: 1.7em;
 			display: block;
 			color: #888;
-			font-size: 13px;
+			font-size: 14px;
       font-style: italic;
+      font-weight: $light;
 			line-height: 1.6em;
 			position: relative;
 		

@@ -2,7 +2,6 @@
 // 	- Description : Theme Global Variables
 // 	- Author      : Rahisi Themes
 // 	- Theme       : Deluxer
-// 	- Version     : 1.2
 // ==========================================================
 
 
@@ -16,15 +15,21 @@ $asset-path: '../';
 
 @import url($asset-path + "fonts/font-awesome/font-awesome.css");
 @import url($asset-path + "fonts/open-sans/open-sans.css");
-@import url($asset-path + "fonts/roboto/roboto.css");
 
 // TYPOGRAPHY VARIABLES
 // ==========================================================
 
-$text-font:'Open Sans';
-$title-font: 'Roboto Condensed';
-$title-font-2:'Roboto Condensed Light';
-$title-font-3: 'Roboto Black';
+$text-font:'Open Sans Web';
+$title-font: 'Open Sans Web';
+$title-font-2:'Open Sans Web';
+$title-font-3: 'Open Sans Web';
+
+// font weights
+$normal: normal;
+$bold: bold;
+$semibold: 600;
+$bolder: 800;
+$light: 300;
 
 $icon-font: 'FontAwesome';
 $font-size: 13px;
@@ -41,8 +46,10 @@ $nav-link-h : $nav-h; // absolute height of navigation links.
 $nav-link-pad-x : 20px; // horizontal padding of nav links.
 $nav-link-margin-y: floor(($nav-h - $nav-link-h) / 2); // vertical margin used for centering. Equals 0 if link height = navigation height.
 
-$brand-h: 30px; // logo height
-$brand-margin-y: floor(($nav-h - $brand-h) / 2); // vertical margin used for centering.
+$navbrand-h: 34px; //brand height
+$navbrand-pad-x: 15px; // horizontal padding
+$navbrand-pad-y: floor(($nav-h - $navbrand-h) / 2); // vertical padding used for centering
+$navbrand-font-size: floor($navbrand-h * 0.75); // brand font size
 
 $nav-toggle-h: floor($nav-h * 0.4); // height of navigation toggle
 $nav-toggle-margin-y: floor(($nav-h - $nav-toggle-h) / 2);// vertical margin used for centering.
@@ -68,8 +75,8 @@ $boxed-total-pad-x: $boxed-pad-x * 2; // total padding.
 $bs-pad-x: 15px; // bootstrap horizontal container padding
 $bs-total-pad-x: $bs-pad-x *2; // total padding;
 $is-boxed: true !default; // boxed layout true/false
-$header-fixed: true !default; // fixed or static header.
-$header-h: $nav-h !default; // absolute height of the header. Equals navigation height in this theme.
+$header-fixed: false !default; // fixed or static header.
+$header-h: $nav-h; // absolute height of the header. Equals navigation height in this theme.
 $cont-pad: 70px !default; // content padding.
 $intro-pad-t: 120px; // intro padding.
 $intro-pad-b: 120px; // intro padding.
@@ -83,13 +90,9 @@ $footer-pad: 60px; // footer padding.
   @include vendorize(background-size, "cover!important");
 }
 
-$page-bg: $asset-path + "images/backgrounds/cover3.jpg" !default; // page background image.
-
+$page-bg: $asset-path + "images/backgrounds/pagebg.jpg" !default; // page background image.
 .page-bg {background:url($page-bg) no-repeat center 0 fixed; @extend %bg-cover; }
-//.pic-bg-1 { background:url($asset-path + "images/backgrounds/cover1.jpg") no-repeat center 0 fixed; @extend %bg-cover;}
-//.pic-bg-2 { background:url($asset-path + "images/backgrounds/cover2.jpg") no-repeat center 0 fixed; @extend %bg-cover;}
-//.pic-bg-3 { background:url($asset-path + "images/backgrounds/cover3.jpg") no-repeat center 0 fixed; @extend %bg-cover;}
-//.pic-bg-4 { background:url($asset-path + "images/backgrounds/cover4.jpg") no-repeat center 0 fixed; @extend %bg-cover;}
+
 
 
 

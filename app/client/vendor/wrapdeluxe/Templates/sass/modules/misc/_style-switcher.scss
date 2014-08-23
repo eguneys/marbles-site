@@ -8,6 +8,14 @@
   z-index: 20000;
   display: block;
   
+  label{
+    margin:0;
+    font-weight: normal;
+  }
+  input {
+    margin-right: 5px;
+    margin-top:0;
+  }
   .ctrl {
     float: left;
     color: #fff;

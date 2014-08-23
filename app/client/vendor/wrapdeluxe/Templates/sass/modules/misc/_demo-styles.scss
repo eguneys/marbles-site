@@ -7,13 +7,10 @@
   
   #header {
     width:100%!important;
-    
-    #main-nav {
-      border-top:$nav-top-line-h solid $color-2;
-      .container {
-        border: none;
-      }
-    }
+  }
+  
+  #top-bar, #main-nav {
+    max-width:none;
   }
   
 
@@ -22,65 +19,51 @@
 
 #page-wrapper.boxed {
 
-
-  #header {
-  
-    #main-nav {
-      border: none;
+    @media (min-width: 768px) {
+    
+      $cont-max : 750px;
+      $boxed-w: ($cont-max - $bs-total-pad-x) + $boxed-total-pad-x;
+      max-width: $boxed-w;
+      
       .container {
-        border-top:$nav-top-line-h solid $color-2;
+        max-width: $cont-max!important;
+        width:auto!important;
+      }
+      #top-bar, #main-nav {
+        max-width: $boxed-w;
+      }
+      
+    }
+    @media (min-width: 992px) {
+    
+      $cont-max : 970px;
+      $boxed-w: ($cont-max - $bs-total-pad-x) + $boxed-total-pad-x;
+      max-width: $boxed-w;
+      
+      #top-bar, #main-nav {
+        max-width: $boxed-w;
+      }
+      
+      .container {
+        max-width: $cont-max!important;
+        width:auto!important;
       }
     }
-    
-    #top-bar.open + #main-nav {
-
-      border-top: $nav-top-line-h solid $color-2;
+    @media (min-width: 1200px) {
+      
+      $cont-max : 1170px;
+      $boxed-w: ($cont-max - $bs-total-pad-x) + $boxed-total-pad-x;
+      max-width: $boxed-w;
+      
+        #top-bar, #main-nav {
+        max-width: $boxed-w;
+      }
+      
       .container {
-        border:none;
+        max-width: $cont-max!important;
+        width:auto!important;
       }
     }
-  }
-
-
-  @media (min-width: 768px) {
-  
-    $cont-max : 750px;
-    $boxed-w: ($cont-max - $bs-total-pad-x) + $boxed-total-pad-x;
-    max-width: $boxed-w;
-    
-    #header { width: $boxed-w; }
-    
-    .container {
-      max-width: $cont-max!important;
-      width:auto!important;
-    }
-  }
-  @media (min-width: 992px) {
-  
-    $cont-max : 970px;
-    $boxed-w: ($cont-max - $bs-total-pad-x) + $boxed-total-pad-x;
-    max-width: $boxed-w;
-    
-    #header { width: $boxed-w; }
-    
-    .container {
-      max-width: $cont-max!important;
-      width:auto!important;
-    }
-  }
-  @media (min-width: 1200px) {
-    
-    $cont-max : 1170px;
-    $boxed-w: ($cont-max - $bs-total-pad-x) + $boxed-total-pad-x;
-    max-width: $boxed-w;
-    
-    #header { width: $boxed-w; }
-    
-    .container {
-      max-width: $cont-max!important;
-      width:auto!important;
-    }
-  }
 
 }
 

@@ -421,27 +421,28 @@ $btn-pad : 8px;
 /* BREADCRUMB
 ---------------------------------------------------*/
 
+
 .breadcrumb {
-    padding: 0;
-    background: none;
-    margin: 0;
-    display: inline-block;
-	@include vendorize(border-radius, "0");
-}
-.breadcrumb  li {
-    line-height: 35px;
-    font-size: 12px;
-    text-transform: uppercase;
-}
-.breadcrumb  li  a { color: #888 }
-.breadcrumb  li.active { font-weight: 600 }
-.breadcrumb  i {
-    text-align: center;
-    display: inline-block;
-    line-height: 35px;
-    width: 35px;
-    background: #eee;
-	@include vendorize(border-radius, "50%");
+  padding:0;
+  margin:0;
+  background:none;  
+
+  li {
+    text-transform: capitalize;
+    display:inline-block;
+    
+    a {
+      display:inline-block;
+    }
+  }
+  
+  li + li:before {
+    content: "\f105";
+    font-family: $icon-font;
+    padding:0 10px;
+  }
+  
+
 }
 
 /* PRE

@@ -11,15 +11,15 @@
   
     h2 {
       color: #fff;
-      font:bold 45px $title-font;
+      font-size: 40px;
+      font-weight: $normal;
       margin:0;
       text-transform:capitalize;
-      
     }
   }
   
   .btn { 
-		padding: 13px 0;
+		padding: 15px 0;
     min-width: 200px;
     margin:5px;
     @include vendorize(box-shadow, "0 2px 0 -1px rgba(0, 0, 0, 0.2)");
@@ -27,9 +27,10 @@
   
   .meta {
     color: #fff;
-    margin:15px 0 15px 0;
+    margin:15px 0 20px 0;
     text-transform: capitalize;
-    font:normal 17px $title-font-2;
+    font-size: 17px;
+    font-weight: $light;
     display: inline-block;
     position: relative;
     padding:0 20px 0 20px;
@@ -51,10 +52,25 @@
     }
   }
   
+
+  @media (max-width: 991px) {
+  
+    .slide {
+      h2 {
+        font-size: 34px;
+        
+      }
+      
+    }
+    
+    .meta {
+      font-size: 14px;
+    }
+  }
+  
   @media (max-width: 767px) {
   
     .slide {
-    
       h2 {
         font-size: 25px;
       }
@@ -65,21 +81,8 @@
       font-size: 14px;
     }
   }
-  
-  @media (max-width: 991px) {
-  
-    .slide {
-    
-      h2 {
-        font-size: 40px;
-      }
-      
-    }
-    
-    .meta {
-      font-size: 15px;
-    }
-  }
+ 
+
   
 }
 
@@ -103,24 +106,44 @@
     position: static;
     line-height:1;
     padding:0;
-    margin:0;
+    margin:5px 0 0 0;
 	}
   
   .bx-pager.bx-default-pager a {
-    background: $color-1;
-		margin:1px;
+    background: none;
+		margin:0;
     border-radius: 0;
-    height: 10px;
+    height: 15px;
     width:40px;
     line-height:1;
+    display:inline-block;
+    position:relative;
+    
+    &:after {
+      content:"";
+      display:block;
+      position: absolute;
+      top:0;
+      bottom:0;
+      height: 2px;
+      width:100%;
+      margin:auto;
+      background: #fff;
+    }
 	}
 	
 	.bx-pager.bx-default-pager a:hover {
-		background: rgba(#fff, 0.7);
+		&:after {
+      background: rgba(#fff, 0.6);
+    }
 	}
 	
 	.bx-pager.bx-default-pager a.active {
-    background: #fff;
+    		&:after {
+      background: $color-1;
+      height:2px;
+      
+    }
 	}
 
 }
