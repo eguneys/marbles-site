@@ -149,7 +149,7 @@ gulp.task('build-requirejs', ['build-scripts', 'build-styles'], function(cb) {
         optimizeCss: 'standard',
         // currently inlining font css files fails
         // http://stackoverflow.com/questions/25467038/inlining-font-css-files-and-fonts-gone
-        cssImportIgnore: '../fonts/open-sans/open-sans.css,../fonts/font-awesome/font-awesome.css',
+        //cssImportIgnore: '../fonts/open-sans/open-sans.css,../fonts/font-awesome/font-awesome.css',
         preserveLicenseComments: false,
         modules: [
             {
