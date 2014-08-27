@@ -64,7 +64,7 @@
     "sequelize": "^2.0.0-dev12",
     "serve-favicon": "^2.0.1",
     "streamqueue": "^0.1.1",
-    "testem": "^0.6.17",
+    "testem": "^0.6.18",
     "wiredep": "^1.8.1"
   }
 }

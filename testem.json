@@ -8,5 +8,15 @@
                   "public/assets/scripts/**/*.js"],
     "serve_files": [
         "tests/**/*.js"
-    ]
+    ],
+    "proxy": {
+        "/api/v1": "http:/klasjfd",
+        "*": "fallback"
+    },
+    "proxies": {
+        "/api/v1": {
+            "port": 3000,
+            "host": "localhost"
+        }
+    }
 }

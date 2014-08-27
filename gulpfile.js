@@ -311,14 +311,33 @@ gulp.task('watch-devserver', ['serve'], function() {
 });
 
 /*** TEST ***/
-gulp.task('test', ['build'], function() {
-    var testemOptions = {
-        file: 'testem.json'
-    };
+gulp.task('test', ['build'], function(cb) {
+    var spawn = require('child_process').spawn;
 
-    var t = new testem();
+    var proc = spawn('node', ['config/app']);
+
+    proc.stdout.on('readable', function() {
+        var output = proc.stdout.read();
+        
+        if (output && output.toString().match('express listening')) {
+            
+            var testemOptions = {
+                file: 'testem.json'
+            };
+
+            var t = new testem();
+
+            t.startCI(testemOptions, function() {
+                proc.kill();
+                cb();
+
+                // TODO is this ok?
+                process.exit();
+            });
+        }
+        
+    });
     
-    return t.startCI(testemOptions);
 });
 
 
