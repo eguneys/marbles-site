@@ -16,6 +16,9 @@ require.config({
         handlebars: 'handlebars/handlebars',
         bootstrap: 'bootstrap-sass-official/assets/javascripts/bootstrap',
         'ember-data': 'ember-data/ember-data',
+        'ember-flash-message': 'ember-flash-message/flash-message',
+        vendor: '../vendor',
+        'bootstrap-growl': 'bootstrap-growl/bootstrap-growl',
         'ember-qunit': 'ember-qunit/dist/globals/main'
     },
     shim: {
@@ -31,6 +34,16 @@ require.config({
                 'ember'
             ],
             exports: 'DS'
+        },
+        'ember-flash-message': {
+            deps: [
+                'ember'
+            ]
+        },
+        'bootstrap-growl': {
+            deps: [
+                'jquery'
+            ]
         },
         'ember-qunit': {
             deps: ['ember']

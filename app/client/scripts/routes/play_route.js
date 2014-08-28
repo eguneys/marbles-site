@@ -26,12 +26,12 @@ define(['ember', 'app/app', 'templates/play', 'controllers/play_controller'], fu
                     resolve();
                 });
             });
-        },
-
-        deactivate: function() {
-            Ember.run.later(this, function() {
-                window.location.reload(true);
-            }, 200);
         }
+
+        // deactivate: function() {
+        //     Ember.run.later(this, function() {
+        //         window.location.reload(true);
+        //     }, 200);
+        // }
     });
 });

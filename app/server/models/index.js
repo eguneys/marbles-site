@@ -5,8 +5,13 @@ var fs = require('fs'),
     sequelize = null,
     db = {};
 
-
-if (process.env.HEROKU_POSTGRESQL_WHITE_URL) {
+if (process.env.NODE_ENV === 'test') {
+    console.log('[test] using in memory database');
+    sequelize = new Sequelize('marbles-site-db', null, null, {
+        dialect: 'sqlite',
+        storage: ':memory:'
+    });
+} else if (process.env.HEROKU_POSTGRESQL_WHITE_URL) {
     var match = process.env.HEROKU_POSTGRESQL_WHITE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
 
     sequelize = new Sequelize(match[5], match[1], match[2], {

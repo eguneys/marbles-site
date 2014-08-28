@@ -44,7 +44,7 @@ define(['ember', 'app/app'], function(Ember, App) {
             quitGame: function() {
                 this.set('isPlaying', false);
                 this.get('game').destroy();
-                window.location.reload(true);
+                //window.location.reload(true);
             }
         }
     });

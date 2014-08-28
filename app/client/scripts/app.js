@@ -24,6 +24,8 @@ define(['ember', 'ember-data'], function(Ember, DS) {
             }
         }
     });
+
+    App.FlashMessageController = Ember.FlashMessageController;
     
     return App;
 });

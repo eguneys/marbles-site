@@ -327,12 +327,14 @@ gulp.task('test', ['build'], function(cb) {
 
             var t = new testem();
 
-            t.startCI(testemOptions, function() {
+            t.startCI(testemOptions, function(result) {
                 proc.kill();
                 cb();
-
+                
                 // TODO is this ok?
-                process.exit();
+                // no because it doesnt throw error when tests fail
+                // maybe passing result will fix it.
+                process.exit(result);
             });
         }
         

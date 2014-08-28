@@ -1,6 +1,9 @@
-define ['controllers/about_controller'], ->
+define ['app/app', 'ember-flash-message', 'controllers/about_controller'], (App) ->
+    if (!App.FlashMessageController)
+        App.FlashMessageController = Ember.FlashMessageController
+
     moduleFor 'controller:about', 'About Controller', {
-        needs: []
+        needs: ['controller:flashMessage']
     }
     
     test 'exists', ->
