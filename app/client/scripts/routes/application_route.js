@@ -1,12 +1,6 @@
-define(['ember', 'app/app', 'controllers/application_controller'], function(Ember, App) {
-
-    App.Newsletter = Ember.Object.extend({
-        email: ''
-    });
+define(['ember', 'app/app', 'models/newsletter_model', 'controllers/application_controller'], function(Ember, App) {
     
     App.ApplicationRoute = Ember.Route.extend({
-        model: function() {
-            return App.Newsletter.create({});
-        }
+        
     });
 });

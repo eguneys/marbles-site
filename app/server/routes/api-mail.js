@@ -35,14 +35,16 @@ module.exports = function(router) {
         });
     });
 
-    router.post('/newsletter', function(req, res) {
-        var data = req.body;
+    router.post('/newsletters', function(req, res) {
+        var data = req.body.newsletter;
 
         db.Newsletter.addEmail(data.email, function(err, newsletter) {
             if (err) {
-                res.status(err.responseCode).end();
+                res.status(422).send({
+                    errors: err
+                });
             } else {
-                res.send(newsletter);
+                res.send({newsletter: newsletter});
             }
         });
     });

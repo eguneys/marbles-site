@@ -2,7 +2,13 @@ var Sequelize = require('sequelize');
 
 module.exports = function(sequelize, DataTypes) {
     var Newsletter = sequelize.define('Newsletter', {
-        email: DataTypes.STRING
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: true
+            }
+        }
     }, {
         classMethods: {
             associate: function(models) {
@@ -13,6 +19,8 @@ module.exports = function(sequelize, DataTypes) {
                     email: email
                 }).success(function(newsletter) {
                     callback(null, newsletter);
+                }).error(function(error) {
+                    callback(error);
                 });
             }
         }
