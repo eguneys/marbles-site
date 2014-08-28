@@ -1,6 +1,4 @@
 requirejs.config({
-    //deps: ['app/main'],
-    //baseUrl: '/public/assets/scripts/lib',
     paths: {
         app: '../app',
         routes: '../app/routes',
@@ -17,6 +15,7 @@ requirejs.config({
         handlebars: 'handlebars/handlebars',
         bootstrap: 'bootstrap-sass-official/assets/javascripts/bootstrap',
         'ember-data': 'ember-data/ember-data.min',
+        'ember-flash-message': 'ember-flash-message/flash-message',
         vendor: '../vendor'
     },
     shim: {
@@ -32,6 +31,11 @@ requirejs.config({
                 'ember'
             ],
             exports: 'DS'
+        },
+        'ember-flash-message': {
+            deps: [
+                'ember'
+            ]
         },
         'bootstrap/collapse': {
             deps: [

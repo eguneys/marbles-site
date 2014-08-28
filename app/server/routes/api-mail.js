@@ -9,12 +9,13 @@ module.exports = function(router) {
         var data = req.body;
 
         var emailer = new Emailer({
+            from: 'no-reply@jsgamesonline.com',
             to: {
                 email: 'emreguneyler@windowslive.com',
                 name: 'feedback',
-                surname: 'hadioyna'
+                surname: 'jsgamesonline'
             },
-            subject: 'Feedback from Hadioyna',
+            subject: 'Feedback from JsGamesOnline',
             template: 'feedback'
         }, data, {
             host: 'smtp.mandrillapp.com',

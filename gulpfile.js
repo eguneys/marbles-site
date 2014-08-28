@@ -247,7 +247,7 @@ gulp.task('bower-rjs', function() {
 
     bowerRjs({
         config: paths.src.common + '/scripts/common.js',
-        exclude: ['bootstrap-sass-official'],
+        exclude: ['bootstrap-sass-official', 'ember-data', 'font-awesome', 'ember-qunit'],
         baseUrl: paths.src.common + '/bower_components'
     }, function() {
         //

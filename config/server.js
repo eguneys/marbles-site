@@ -14,7 +14,9 @@ app.engine('.hbs', expressHbs({ extname: '.hbs',
 app.set('views', path.join(__dirname, '..', 'app', 'server', 'views'));
 app.set('view engine', '.hbs');
 
-if ('development' == app.get('env')) {
+if ('development' === app.get('env')) {
+    console.log('[development]: using livereload middleware');
+    
     app.use(require('connect-livereload')());
 }
 
