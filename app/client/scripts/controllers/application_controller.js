@@ -5,9 +5,18 @@ define(['ember', 'app/app'], function(Ember, App) {
                 $.post('/api/v1/newsletter', {
                     email: this.get('email')
                 }).then(function() {
-                    console.log('ok');
+                    $.growl({
+                        title: '<strong>Well done!</strong> ',
+                        message: 'You are added successfully.&nbsp;&nbsp;&nbsp;'
+                    }, { type: 'success'
+                       });
                 }, function(err) {
-                    console.log('fail' + err);
+                    $.growl({
+                        title: '<strong>Sorry!</strong> ',
+                        message: 'Try submitting again.&nbsp;&nbsp;&nbsp'
+                    }, {
+                        type: 'danger'
+                    });
                 });
             }
         }

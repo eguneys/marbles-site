@@ -21,7 +21,8 @@
     "ember-data": "canary",
     "font-awesome": "~4.1.0",
     "ember-flash-message": "ryanto/ember-flash-message",
-    "ember": "~1.7.0"
+    "ember": "~1.7.0",
+    "bootstrap-growl": "mouse0270/bootstrap-growl#~2.0.1"
   },
   "resolutions": {
     "jquery": "~2.1.1",

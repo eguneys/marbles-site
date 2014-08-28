@@ -16,7 +16,8 @@ requirejs.config({
         bootstrap: 'bootstrap-sass-official/assets/javascripts/bootstrap',
         'ember-data': 'ember-data/ember-data.min',
         'ember-flash-message': 'ember-flash-message/flash-message',
-        vendor: '../vendor'
+        vendor: '../vendor',
+        'bootstrap-growl': 'bootstrap-growl/bootstrap-growl'
     },
     shim: {
         ember: {
@@ -35,6 +36,11 @@ requirejs.config({
         'ember-flash-message': {
             deps: [
                 'ember'
+            ]
+        },
+        'bootstrap-growl': {
+            deps: [
+                'jquery'
             ]
         },
         'bootstrap/collapse': {
