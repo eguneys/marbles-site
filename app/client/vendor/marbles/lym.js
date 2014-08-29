@@ -60688,6 +60688,13 @@ define('states/main_intro',['phaser', 'prefabs/fade_tween', 'util'], function(Ph
     function MainIntroState() {}
     
     MainIntroState.prototype = {
+        destroy: function() {
+            console.log('destroy');
+        },
+        shutdown: function() {
+            console.log('shutdown');
+            this.fx.destroy();
+        },
         create: function() {
             this.fx = Util.parseAudioSprite(this.game);
             
@@ -60702,7 +60709,7 @@ define('states/main_intro',['phaser', 'prefabs/fade_tween', 'util'], function(Ph
 
         tweenFadeState: function() {
             var tween = this.game.add.tween(this.fadeBg)
-                    .to({alpha: 1}, 2000, Phaser.Easing.Linear.None, true);
+                    .to({alpha: 1}, 10000, Phaser.Easing.Linear.None, true);
 
             tween.onComplete.add(function() {
                 this.game.state.start('main-menu');
@@ -62038,6 +62045,10 @@ define('states/level_intro',['phaser', 'states/level_master', 'prefabs/fade_twee
         init: function(levelData, transitionData) {
             this.levelData = levelData;
             this.transitionData = transitionData;
+        },
+
+        shutdown: function() {
+            this.fx.destroy();
         },
         
         create: function() {

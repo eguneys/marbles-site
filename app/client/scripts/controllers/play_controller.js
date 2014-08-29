@@ -42,8 +42,11 @@ define(['ember', 'app/app'], function(Ember, App) {
                 this.get('game').config.setSfxVolume(0.5);
             },
             quitGame: function() {
-                this.set('isPlaying', false);
                 this.get('game').destroy();
+                
+                this.set('isPlaying', false);
+                this.set('loadProgress', 0);
+                this.set('game', null);
                 //window.location.reload(true);
             }
         }
