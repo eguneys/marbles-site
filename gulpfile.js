@@ -311,7 +311,7 @@ gulp.task('watch-devserver', ['serve'], function() {
 });
 
 /*** TEST ***/
-gulp.task('test', ['build'], function(cb) {
+gulp.task('test', function(cb) {
     var spawn = require('child_process').spawn;
 
     var proc = spawn('node', ['config/app']);

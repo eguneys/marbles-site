@@ -30,6 +30,8 @@
      App.setupForTesting();
      App.injectTestHelpers();
 
+     App.reset();
+ 
      require(['ember-qunit', 'ember'], function(emq, Ember) {
        emq.globalize();
 
