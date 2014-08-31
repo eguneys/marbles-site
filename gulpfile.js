@@ -144,7 +144,8 @@ gulp.task('build-requirejs', ['build-scripts', 'build-styles'], function(cb) {
         baseUrl: 'scripts/lib',
         mainConfigFile: paths.src.common + '/scripts/common.js',
         dir: paths.dev_dist + '2',
-        //optimize: 'none',
+        optimize: 'none',
+        enforceDefine: true,
         skipDirOptimize: true,
         optimizeCss: 'standard',
         // currently inlining font css files fails

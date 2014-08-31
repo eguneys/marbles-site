@@ -1,3 +1,20 @@
+V 0.2
+====
+
+* Use player scored, win hooks.
+* Add a tutorial text?
+
+* fix r.js ignoring ember as a named module
+
+* Marbles game end, change route null error
+* Remove placeholder images
+* Add the only game on the main route for now.
+* Add voting on the play route
+* Add feedback on the play route
+
+V 0.1
+====
+
 * Checkout some modules
   * Krakenjs
   * Lusca

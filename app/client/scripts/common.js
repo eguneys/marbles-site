@@ -27,6 +27,12 @@ requirejs.config({
             ],
             exports: 'Ember'
         },
+        handlebars: {
+            exports: 'Handlebars'
+        },
+        jquery: {
+            exports: '$'
+        },
         'ember-data': {
             deps: [
                 'ember'

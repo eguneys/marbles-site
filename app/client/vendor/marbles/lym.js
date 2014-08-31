@@ -60904,6 +60904,7 @@ define("phaser", (function (global) {
 define('config',[], function() {
     function Config() {
         this.options = {
+            env: 'development',
             parent: 'game-area',
             paths: {
                 sprites: '/data/images/sprites',
@@ -60922,6 +60923,12 @@ define('config',[], function() {
             },
             onLoadComplete: function() {
                 console.log('Load: 100');
+            },
+            onPlayerScored: function(points, color) {
+                console.log('points: ' + points);
+            },
+            onPlayerWin: function() {
+                console.log('win');
             }
         };
     }
@@ -61042,7 +61049,9 @@ define('util',['config'], function(Config) {
         });
     };
 
-    function Util() {}
+    function Util() {
+        this.Config = Config;
+    }
 
     Util.prototype.parseAudioSprite = function(game, key, json) {
         key = key || 'sfx';
@@ -61088,7 +61097,7 @@ define('states/main_intro',['phaser', 'prefabs/fade_tween', 'util'], function(Ph
 
         tweenFadeState: function() {
             var tween = this.game.add.tween(this.fadeBg)
-                    .to({alpha: 1}, 10000, Phaser.Easing.Linear.None, true);
+                    .to({alpha: 1}, 2000, Phaser.Easing.Linear.None, true);
 
             tween.onComplete.add(function() {
                 this.game.state.start('main-menu');
@@ -61097,6 +61106,86 @@ define('states/main_intro',['phaser', 'prefabs/fade_tween', 'util'], function(Ph
     };
 
     return MainIntroState;
+});
+
+
+
+define('util/gestures',['phaser'], function(Phaser) {
+    function Gesture(game) {
+        this.game = game;
+        
+        this.swipeDispatched = false;
+        this.holdDispatched = false;
+        
+        this.isTouching = false;
+        this.isHolding = false;
+        
+        this.onSwipe = new Phaser.Signal();
+        this.onTap = new Phaser.Signal();
+        this.onHold = new Phaser.Signal();
+
+    }
+
+    Gesture.prototype.update = function() {
+        var distance = Phaser.Point.distance(this.game.input.activePointer.position, this.game.input.activePointer.positionDown);
+        var duration = this.game.input.activePointer.duration;
+
+        this.updateSwipe(distance, duration);
+        this.updateTouch(distance, duration);
+    };
+
+    Gesture.prototype.updateSwipe = function(distance, duration) {
+        if (duration === -1) {
+            this.swipeDispatched = false;
+        } else if (!this.swipeDispatched && distance > 150 &&  duration > 100 && duration < Gesture.TIMES.SWIPE) {
+            var positionDown = this.game.input.activePointer.positionDown;
+            this.onSwipe.dispatch(this, positionDown);
+
+            this.swipeDispatched = true;
+        }
+    };
+
+    Gesture.prototype.updateTouch = function(distance, duration) {
+        var positionDown = this.game.input.activePointer.positionDown;
+
+        if (duration === -1) {
+            if (this.isTouching) {
+                this.onTap.dispatch(this, positionDown);
+            }
+
+            this.isTouching = false;
+            this.isHolding = false;
+            this.holdDispatched = false;
+            
+        } else if (distance < 10) {
+            if (duration < Gesture.TIMES.HOLD) {
+                this.isTouching = true;
+            } else {
+                this.isTouching = false;
+                this.isHolding = true;
+
+                if (!this.holdDispatched) {
+                    this.holdDispatched = true;
+                    
+                    this.onHold.dispatch(this, positionDown);
+                }
+            }
+        } else {
+            this.isTouching = false;
+            this.isHolding = false;
+        }
+    };
+    
+    Gesture.SWIPE = 0;
+    Gesture.TAP = 1;
+    Gesture.HOLD = 2;
+
+    Gesture.TIMES = {
+        HOLD: 150,
+        SWIPE: 250
+    };
+
+    return Gesture;
 });
 
 
@@ -61154,6 +61243,15 @@ define('prefabs/base_menu',['phaser', 'prefabs/toggle_sprite'], function(Phaser,
         DOWN: 3
     };
 
+
+    Menu.prototype.makeSelection = function(newIdx) {
+        if (newIdx !== this.menuIdx) {
+            this.menuItems[this.menuIdx].animations.play('off');
+            this.menuIdx = newIdx;
+            this.menuItems[this.menuIdx].animations.play('on');
+        }
+    };
+    
     Menu.prototype.addToggleMenuItem = function(x, y, atlas, keyOn, keyOff, menuIdx) {
         var menuItem = new ToggleSprite(this.game, x, y, atlas, keyOn, keyOff);
         this.add(menuItem);
@@ -61163,6 +61261,24 @@ define('prefabs/base_menu',['phaser', 'prefabs/toggle_sprite'], function(Phaser,
     };
     
     Menu.prototype.getSelection = function() {
+        return this.menuIdx;
+    };
+
+    
+    Menu.prototype.tap = function(pos) {
+        var items = this.menuItems.filter(function(item) {
+            if (Phaser.Rectangle.containsPoint(item.getBounds(), pos)) {
+                return true;
+            }
+            return false;
+        });
+
+        if (items.length > 0) {
+            var itemIdx = this.menuItems.indexOf(items[0]);
+            
+            this.makeSelection(itemIdx);
+        }
+
         return this.menuIdx;
     };
 
@@ -61295,7 +61411,8 @@ define('prefabs/red_marble',['phaser', 'util'], function(Phaser, Util) {
 
 
 define('prefabs/main_menu',['phaser', 'util', 'prefabs/red_marble'], function(Phaser, Util, RedMarble) {
-    
+
+    // TODO Merge with base_menu
     function Menu(game, fx) {
         Phaser.Group.call(this, game);
 
@@ -61450,6 +61567,13 @@ define('prefabs/main_menu',['phaser', 'util', 'prefabs/red_marble'], function(Ph
             break;
         }
 
+        this.makeSelection(newIdx, newSamIdx);
+        
+        return this.menuIdx;
+    };
+
+    Menu.prototype.makeSelection = function(newIdx, newSamIdx) {
+
         if (newIdx !== this.menuIdx) {
             this.menuItems[this.menuIdx].animations.play('off');
             this.menuIdx = newIdx;
@@ -61472,13 +61596,38 @@ define('prefabs/main_menu',['phaser', 'util', 'prefabs/red_marble'], function(Ph
                 this.redMarble.stopSound();
             }
             this.redMarble.x = this.menuItems[this.menuIdx].x - this.redMarble.width;
-        } else if (newSamIdx !== this.samIdx) {
+        }
+
+        if (newSamIdx !== this.samIdx) {
             this.menuItems[this.samIdx].animations.play('off');
             this.samIdx = newSamIdx;
             this.menuItems[this.samIdx].animations.play('on');
         }
+    };
 
-        return this.menuIdx;
+    Menu.prototype.tap = function(pos) {
+        var items = this.menuItems.filter(function(item) {
+            if (Phaser.Rectangle.containsPoint(item.getBounds(), pos)) {
+                return true;
+            }
+            return false;
+        });
+
+        if (items.length > 0) {
+            var itemIdx = this.menuItems.indexOf(items[0]);
+            var samIdx = this.samIdx;
+            
+            if (itemIdx >= 5) {
+                samIdx = itemIdx;
+                itemIdx = Menu.Items.SAM;
+            }
+            
+            this.makeSelection(itemIdx, samIdx);
+
+            return this.menuIdx;
+        }
+
+        return -1;
     };
 
     Menu.prototype.playSelectSound = function() {
@@ -61655,7 +61804,7 @@ define('prefabs/options_menu',['phaser', 'config', 'prefabs/base_menu', 'prefabs
         'mouse': 'OPTIONS_MENU_CONTROL_MOUSE',
         'gpad': 'OPTIONS_MENU_CONTROL_GPAD_'
     };
-
+    
     OptionsMenu.prototype.select = function(direction) {
         var newIdx = this.menuIdx;
 
@@ -61674,11 +61823,7 @@ define('prefabs/options_menu',['phaser', 'config', 'prefabs/base_menu', 'prefabs
             break;
         }
 
-        if (newIdx !== this.menuIdx) {
-            this.menuItems[this.menuIdx].animations.play('off');
-            this.menuIdx = newIdx;
-            this.menuItems[this.menuIdx].animations.play('on');
-        }
+        this.makeSelection(newIdx);
     };
 
     OptionsMenu.prototype.selectLeftRight = function(direction) {
@@ -61750,7 +61895,7 @@ define('prefabs/options_menu',['phaser', 'config', 'prefabs/base_menu', 'prefabs
 
 
 
-define('states/main_menu',['phaser', 'config', 'prefabs/base_menu', 'prefabs/main_menu', 'prefabs/options_menu', 'prefabs/fade_tween', 'util'], function(Phaser, Config, BaseMenu, MainMenu, OptionsMenu, FadeTween, Util) {
+define('states/main_menu',['phaser', 'config', 'util/gestures', 'prefabs/base_menu', 'prefabs/main_menu', 'prefabs/options_menu', 'prefabs/fade_tween', 'util'], function(Phaser, Config, Gesture, BaseMenu, MainMenu, OptionsMenu, FadeTween, Util) {
     function MainMenuState() {}
 
     MainMenuState.States = {
@@ -61780,8 +61925,14 @@ define('states/main_menu',['phaser', 'config', 'prefabs/base_menu', 'prefabs/mai
             this.rightKey = this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
             this.spacebarKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
             this.enterKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+
+            this.gesture = new Gesture(this.game);
             
             this.tweenFadeOut();
+        },
+
+        update: function() {
+            this.gesture.update();
         },
 
         gameStart: function() {
@@ -61797,7 +61948,36 @@ define('states/main_menu',['phaser', 'config', 'prefabs/base_menu', 'prefabs/mai
             this.spacebarKey.onDown.add(this.keyEnter, this);
             this.enterKey.onDown.add(this.keyEnter, this);
 
+            this.gesture.onTap.add(this.tapped, this);
+            this.gesture.onHold.add(this.holded, this);
+            
             this.menuState = MainMenuState.States.MAIN;
+        },
+
+        tapped: function(e, pos) {
+            if (this.menuState === MainMenuState.States.MAIN) {
+                if (this.menu.tap(pos) !== -1) {
+                    this.menu.playSelectSound();
+                }
+            } else if (this.menuState === MainMenuState.States.OPTIONS) {
+                if (this.optionsMenu.tap(pos) !== -1) {
+                    this.menu.stopSound();
+                    this.menu.playSelectSound();
+                }
+            }
+        },
+
+        holded: function(e, pos) {
+            if (this.menuState === MainMenuState.States.MAIN) {
+                if (this.menu.tap(pos) !== -1) {
+                    this.mainMenuSelect();
+                    this.menu.stopSound();
+                }
+            } else if (this.menuState === MainMenuState.States.OPTIONS) {
+                if (this.optionsMenu.tap(pos) !== -1) {
+                    this.optionsMenuSelect();
+                }
+            }
         },
 
         keyPress: function(key) {
@@ -64183,6 +64363,7 @@ define('prefabs/marble_match',['phaser', 'util', 'prefabs/marble_group', 'prefab
         p2Hud.onMarblePop.add(this.marblePop.bind(this, MarbleMatch.Player.TWO));
         this.hud[MarbleMatch.Player.TWO] = p2Hud;
 
+        this.onPlayerScored = new Phaser.Signal();
         this.onMatchEnd = new Phaser.Signal();
     }
     
@@ -64234,9 +64415,12 @@ define('prefabs/marble_match',['phaser', 'util', 'prefabs/marble_group', 'prefab
     
     MarbleMatch.prototype.marbleMatched = function(player, color, count, streak) {
 
-        //TODO uncomment this for DEBUG
-        this.marbleFull(player);
-        return;
+        this.onPlayerScored.dispatch(player, color, count, streak);
+        
+        if (Util.Config.options.env === 'development') {
+            this.marbleFull(player);
+            return;
+        }
         
         var opponent = (player + 1) % 2;
 
@@ -64620,7 +64804,7 @@ define('bot/bot_ai',['phaser', 'prefabs/marble', 'bot/strat', 'bot/quick_strat',
         QUICK: 1,
         COLOR: 2,
         DUMP: 3,
-        STREAK: 4,
+        STREAK: 4
     };
 
     BotAI.prototype.update = function(state) {
@@ -64688,13 +64872,13 @@ define('states/level_round',['phaser',
         'prefabs/round_foreground',
         'prefabs/pause_menu',
         'prefabs/fade_tween',
-        'prefabs/marble_group', 'prefabs/marble_match', 'bot/bot_ai', 'util'],
+        'prefabs/marble_group', 'prefabs/marble_match', 'bot/bot_ai', 'util', 'config'],
        function(Phaser,
                 LevelMasterState,
                 RoundForeground,
                 PauseMenu,
                 FadeTween,
-                MarbleGroup, MarbleMatch, BotAI, Util) {
+                MarbleGroup, MarbleMatch, BotAI, Util, Config) {
     function LevelRoundState() {}
 
     LevelRoundState.States = {
@@ -64734,6 +64918,17 @@ define('states/level_round',['phaser',
             this.match.onMatchEnd.add(function(winner) {
                 this.roundState = LevelRoundState.States.ROUND_END;
                 this.roundWinner = winner;
+
+                if (this.roundWinner === MarbleMatch.Player.ONE) {
+                    Config.options.onPlayerWin();
+                }
+            }, this);
+
+            this.match.onPlayerScored.add(function(player, color, count, streak) {
+                var points = count * (streak + 1);
+                if (player === MarbleMatch.Player.ONE) {
+                    Config.options.onPlayerScored(points, color);
+                }
             }, this);
 
             this.pauseMenu = new PauseMenu(this.game, this.renderLayer, level, this.fx);
@@ -65402,7 +65597,12 @@ define('prefabs/marble_bonus_match',['phaser', 'util', 'prefabs/marble_group', '
         this.status = MarbleBonusMatch.State.INITIAL;
 
         this.timeLeft = 90;
-        this.marblesTarget = 10;
+        this.marblesTarget = 100;
+
+        if (Util.Config.options.env === 'development') {
+            this.marblesTarget = 10;
+        }
+        
         this.marblesCount = 0;
         
         var p1Info = {
