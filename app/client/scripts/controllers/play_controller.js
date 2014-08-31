@@ -29,6 +29,13 @@ define(['ember', 'app/app'], function(Ember, App) {
         onGameLoadCompleteCallback: function() {
             this.set('loadProgress', 100);
         },
+
+        onPlayerScoredCallback: function(points, color) {
+            console.log(color);
+        },
+
+        onPlayerWinCallback: function() {
+        },
         
         actions: {
             startGame: function() {
@@ -42,12 +49,12 @@ define(['ember', 'app/app'], function(Ember, App) {
                 this.get('game').config.setSfxVolume(0.5);
             },
             quitGame: function() {
-                this.get('game').destroy();
-                
-                this.set('isPlaying', false);
-                this.set('loadProgress', 0);
-                this.set('game', null);
-                //window.location.reload(true);
+                if (this.get('isPlaying')) {
+                    this.get('game').destroy();
+                    this.set('isPlaying', false);
+                    // remove canvas manually
+                    $('#game-area').html('');
+                }
             }
         }
     });

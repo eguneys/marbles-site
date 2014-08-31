@@ -8,6 +8,7 @@ define(['ember', 'app/app', 'templates/play', 'controllers/play_controller'], fu
             return new Ember.RSVP.Promise(function(resolve) {
                 require(['vendor/marbles/lym'], function(lym) {
                     var game = new lym.app({
+                        env: 'production',
                         parent: 'game-area',
                         paths: {
                             sprites: '/public/assets/vendor/marbles/data/images/sprites',
@@ -18,7 +19,9 @@ define(['ember', 'app/app', 'templates/play', 'controllers/play_controller'], fu
                         onGameEnd: ctrl.get('onGameEndCallback').bind(ctrl),
                         onGameQuit: ctrl.get('onGameQuitCallback').bind(ctrl),
                         onLoadUpdate: ctrl.get('onGameLoadUpdateCallback').bind(ctrl),
-                        onLoadComplete: ctrl.get('onGameLoadCompleteCallback').bind(ctrl)
+                        onLoadComplete: ctrl.get('onGameLoadCompleteCallback').bind(ctrl),
+                        onPlayerScored: ctrl.get('onPlayerScoredCallback').bind(ctrl),
+                        onPlayerWin: ctrl.get('onPlayerWinCallback')
                     });
 
                     ctrl.set('game', game);
