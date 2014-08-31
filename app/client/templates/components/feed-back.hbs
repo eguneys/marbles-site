@@ -1,0 +1,20 @@
+<div class="contact-form home-contact">
+  <div class="clearfix">
+    {{#flashMessage}}
+      <div {{bind-attr class=":alert message.type"}}>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" {{action 'dismissFlashMessage'}}>x</button>
+        <strong>{{message.title}}</strong>
+        {{message.body}}
+      </div>
+    {{/flashMessage}}
+    
+    <form class="form-horizontal" {{action "submitFeedback" on="submit"}}>
+      
+      {{input type="text" name="email" value=email class="form-control" placeholder="Email Address"}}
+      {{input type="text" name="subject" value=subject class="form-control" placeholder="Subject"}}
+      {{textarea name="message" value=message class="form-control" placeholder="Your message.."}}
+      <button class="btn btn-primary">Send</button>
+    </form>
+  </div>
+</div>
+</div>

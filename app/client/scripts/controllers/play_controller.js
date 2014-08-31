@@ -1,5 +1,7 @@
 define(['ember', 'app/app'], function(Ember, App) {
     App.PlayIndexController = Ember.ObjectController.extend({
+        needs: ['flashMessage'],
+        
         game: null,
 
         isLoading: function() {
@@ -23,6 +25,9 @@ define(['ember', 'app/app'], function(Ember, App) {
         },
 
         onGameLoadUpdateCallback: function(progress) {
+            if (progress <= this.get('loadProgress')) {
+                progress += 10;
+            }
             this.set('loadProgress', progress);
         },
 
@@ -55,6 +60,36 @@ define(['ember', 'app/app'], function(Ember, App) {
                     // remove canvas manually
                     $('#game-area').html('');
                 }
+            },
+
+            feedbackOk: function() {
+                var flashMessage = this.get('controllers.flashMessage');
+                flashMessage.set('message', { 'type': 'alert-success',
+                                              'title': 'Well Done!',
+                                              'body': 'Thanks for the feedback.'});
+            },
+
+            feedbackFail: function() {
+                var flashMessage = this.get('controllers.flashMessage');
+                flashMessage.set('message', { 'type': 'alert-danger',
+                                              'title': 'Sorry!',
+                                              'body': 'Try submitting again.'});
+            },
+
+            voteGame: function(choice) {
+                var choices = this.get('model.poll.choices');
+
+                var vote = this.store.createRecord('vote', {
+                    choice: choices.findBy('id', '' + choice)
+                });
+
+                var self = this;
+                
+                vote.save().then(function(vote) {
+                    self.send('showResults');
+                }, function(vote) {
+                    self.send('showResults');
+                });
             }
         }
     });

@@ -1,4 +1,4 @@
-define(['ember', 'ember-data'], function(Ember, DS) {
+define(['ember', 'ember-data', 'ember-flash-message'], function(Ember, DS) {
     var App = Ember.Application.create();
 
     App.ApplicationAdapter = DS.RESTAdapter.extend({

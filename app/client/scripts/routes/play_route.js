@@ -1,6 +1,14 @@
-define(['ember', 'app/app', 'templates/play', 'controllers/play_controller'], function(Ember, App) {
+define(['ember', 'app/app', 'templates/play', 'models/newsletter_model', 'controllers/play_controller'], function(Ember, App) {
 
     App.PlayRoute = Ember.Route.extend({
+
+        model: function(params) {
+            return Ember.RSVP.hash({
+                poll: this.store.find('poll', params.game_id),
+                feedback: App.Feedback.create(),
+                newVote: this.store.createRecord('vote')
+            });
+        },
         
         renderTemplate: function() {
             var ctrl = this.controllerFor('play.index');

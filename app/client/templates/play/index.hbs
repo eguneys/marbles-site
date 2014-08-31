@@ -65,4 +65,49 @@
     </div>
   </div>
 </section>
-  
+      
+    </div>
+  </div>
+</section>
+
+<section class="content-block page-bg">
+  <div class="overlay tint" style="min-height:0%">
+    <div class="container">
+      <div class="section-title">
+        <h2>leave feedback</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+          {{feed-back submitOk="feedbackOk" submitFail="feedbackFail"}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="overlay tint">
+          {{vote-game poll=poll vote="voteGame" newVote=newVote}}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="content-block default-bg">
+  <div class="container">
+    <div class="section-title">
+      <h2>Help More?</h2>
+      <div class="line color-6-bg"></div>
+      <p>Lose Your Marbles</p>
+    </div>
+    <div class="split-buttons">
+      <a class="btn btn-lg btn-primary" {{ action 'pledge' }}>
+        Pledge
+      </a>{{#link-to 'about' class="btn btn-lg btn-secondary"}}Leave Feedback{{/link-to}}
+      <span>or</span>
+    </div>
+  </div>
+</section>

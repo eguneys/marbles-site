@@ -1,10 +1,4 @@
-define(['ember', 'app/app', 'controllers/about_controller'], function(Ember, App) {
-
-    App.Feedback = Ember.Object.extend({
-        email: '',
-        subject: '',
-        message: ''
-    });
+define(['ember', 'app/app', 'models/newsletter_model', 'controllers/about_controller'], function(Ember, App) {
 
     App.AboutRoute = Ember.Route.extend({
         model: function() {
