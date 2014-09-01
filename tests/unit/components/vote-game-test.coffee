@@ -6,7 +6,7 @@ define ['components/vote-game'], ->
     test 'renders', ->
         expect 2
 
-        component = @subject()
+        component = @subject({poll: { choices: [] }})
         equal component.state, 'preRender'
 
         @append()

@@ -1,6 +1,6 @@
 define(['controllers/play_controller'], function() {
     moduleFor('controller:play-index', 'Play Controller', {
-        needs: []
+        needs: ['controller:flashMessage']
     });
     
     test('exists', function() {

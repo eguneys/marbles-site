@@ -1,5 +1,5 @@
-define ['components/feedback'], ->
-    moduleForComponent 'feedback', 'Feedback Component', {
+define ['components/feed-back'], ->
+    moduleForComponent 'feed-back', 'Feedback Component', {
         needs: []
     }
 

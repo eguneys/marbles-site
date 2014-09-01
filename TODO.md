@@ -1,6 +1,8 @@
 V 0.2
 ====
 
+* Implement fingerprinting leverage browser cache
+
 * Use player scored, win hooks.
 * Add a tutorial text?
 
